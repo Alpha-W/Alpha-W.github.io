@@ -1,4 +1,0 @@
-jekyll serve 预览网页
-git add .　添加本地文件
-git commit -m "xxxx" 提交文件
-git push -u origin master　上传文件
