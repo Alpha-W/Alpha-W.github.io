@@ -24,7 +24,7 @@ $\phi\alpha=(\phi\alpha_1,...,\phi\alpha_n)(x_1,...,x_n)^T=\phi(\alpha_1,...,\al
 
 则有交换图:
 
-$\begin{CD}V_1@>{\phi}>>V_2\\@V{C_1}VV@V{C_2}VV\\F^n@>{\mathcal{A}}>>F^m\end{CD}$
+$$\require{AMScd}\begin{CD}V_1@>{\phi}>>V_2\\@V{C_1}VV@V{C_2}VV\\F^n@>{\mathcal{A}}>>F^m\end{CD}$$
 
 故有以下定理：
 

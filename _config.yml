@@ -1,6 +1,6 @@
 # Site settings 配置站点
-title: 'Sans Souci'
-description: '无隅轩'
+title: 'Sans Bornes'
+description: '大方无隅'
 keyword: '技术, 数学, 历史, 哲学, 阅读, 音乐, 情感,'
 url: '' # your host
 
@@ -19,7 +19,7 @@ footer:
 # Author 配置博主信息
 author: 'Hao Wong'
 #nickname: '悟空'
-bio: '靡不有初,鲜克有终．'
+bio: '靡不有初，鲜克有终'
 avatar: '/assets/img/profile.jpeg'
 
 # Search
