@@ -48,6 +48,3 @@ $A$列满秩$\Leftrightarrow A$有左逆$\Leftrightarrow\mathcal{A}$是单射,$\
 $A$行满秩$\Leftrightarrow A$有右逆$\Leftrightarrow\mathcal{A}$是满射,$\mathcal{A}^\star$是单射$\Leftrightarrow$ $dimker\mathcal{A}=n-m,dimker\mathcal{A}^\star=0.dimIm\mathcal{A}=dimIm\mathcal{A}^\star=m.$
 
 $A$可逆$\Leftrightarrow A$有左逆且$A$有右逆
-
-
-
