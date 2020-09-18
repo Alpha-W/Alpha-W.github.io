@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="线性映射的矩阵表示 设 \(V_1,V_2\)分别为域 \(F\)上的 \(n\)维与 \(m\)维线性空间， \(\phi\in Hom(V_1,V_2)\).又设矩阵 \(A\)为域 \(F\)上的 \(m\times n\)阶矩阵，即 \(A\in M_{m\times n}(F)\).定义 \(\mathcal{A}:F_n\to F_m,x\mapsto Ax\)故...">
+        <meta name="keywords" content="">
+        <link rel="icon" href="/favicon.ico">
+        <!-- Canonical -->
+        <link rel="canonical" href="/xian-xing-ying-she-yu-ju-zhen.html">
+        <!-- /Canonical -->
+
+        <title>线性映射与矩阵 - </title>
+
+        <!-- Stylesheets -->
+        <link href="/theme/css/all.min.css" rel="stylesheet">
+        <!-- /Stylesheets -->
+
+        <!-- RSS Feeds -->
+        <!-- /RSS Feeds -->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+    <div class="header-container gradient">
+
+            <!-- Static navbar -->
+            <div class="container">
+                <div class="header-nav">
+                    <div class="header-logo">
+                        <a class="pull-left" href="/"><img class="mr20" src="/images/logo.png" alt="logo"></a>
+                    </div>
+                    <div class="nav pull-right">
+                                <a href="/index.html">主页</a>
+                                <a href="/categories.html">存档</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /Static navbar -->
+
+            <!-- Header -->
+    <!-- Header -->
+    <div class="container header-wrapper">
+        <div class="row">
+              <div class="col-lg-12">
+                  <div class="header-content">
+                      <h1 class="header-title">线性映射与矩阵</h1>
+                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 四 19 十二月 2019, in category <a href="/category/dai-shu.html">代数</a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="glyphicon glyphicon-tags mr5" aria-hidden="true"></span>
+                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <!-- /Header -->
+            <!-- /Header -->
+
+        </div>
+        <!-- /Header -->
+
+
+        <!-- Content -->
+    <div class="container content">
+        <div class="section" id="id2">
+<h2>线性映射的矩阵表示</h2>
+<p>设 <span class="math">\(V_1,V_2\)</span>分别为域 <span class="math">\(F\)</span>上的 <span class="math">\(n\)</span>维与 <span class="math">\(m\)</span>维线性空间， <span class="math">\(\phi\in Hom(V_1,V_2)\)</span>.又设矩阵 <span class="math">\(A\)</span>为域 <span class="math">\(F\)</span>上的 <span class="math">\(m\times n\)</span>阶矩阵，即 <span class="math">\(A\in M_{m\times n}(F)\)</span>.定义 <span class="math">\(\mathcal{A}:F_n\to F_m,x\mapsto Ax\)</span>故 <span class="math">\(\mathcal{A}\in Hom(F^n,F^m)\)</span>.由于 <span class="math">\(Hom(F^n,F^m)\cong Hom(V_1,V_2)\)</span>.我们想到能否用 <span class="math">\(\mathcal{A}\)</span>来表示 <span class="math">\(\phi\)</span>.即能否将一般的线性映射归结为“用矩阵左乘”这样的线性映射?下面证明之.</p>
+<p>取定 <span class="math">\(V_1,V_2\)</span>的一组(有序)基 <span class="math">\(\alpha_1,...,\alpha_n\)</span>与 <span class="math">\(\beta_1,...,\beta_m\)</span>.</p>
+<p>设 <span class="math">\(\phi \alpha_j=\sum_{k=1}^m a_{kj}\beta_k=(\beta_1,...,\beta_m)(a_{1j},...,a_{mj})^T\)</span> <span class="math">\((j=1,2,...,n)\)</span> <span class="math">\(\phi(\alpha_1,...,\alpha_n)=(\phi\alpha_1,...,\phi\alpha_n)=(\beta_1,...,\beta_m)A\)</span>.</p>
+<p><span class="math">\(\forall\alpha=(\alpha_1,...,\alpha_n)(x_1,...,x_n)^T,(x_1,...,x_n)^T\)</span>为 <span class="math">\(\alpha\)</span>在基 <span class="math">\(\alpha_1,...,\alpha_n\)</span>下的坐标.</p>
+<p><span class="math">\(\phi\alpha=(\phi\alpha_1,...,\phi\alpha_n)(x_1,...,x_n)^T=\phi(\alpha_1,...,\alpha_n)(x_1,...,x_n)^T=(\beta_1,...,\beta_m)A(x_1,...,x_n)^T\)</span></p>
+<p>即 <span class="math">\(\phi\alpha\)</span>在基 <span class="math">\(\beta_1,...,\beta_m\)</span>下的坐标为 <span class="math">\(A(x_1,...,x_n)^T\)</span></p>
+<p>记 <span class="math">\(C_1((\alpha_1,...,\alpha_n)(x_1,...,x_n)^T)=(x_1,...,x_n)^T,C_2((\beta_1,...,\beta_m)(x_1,...,x_m)^T)=(x_1,...,x_m)^T\)</span></p>
+<p>则有交换图:</p>
+<div class="math">
+\begin{equation*}
+\require{AMScd}\begin{CD}V_1&#64;&gt;{\phi}&gt;&gt;V_2\\&#64;V{C_1}VV&#64;V{C_2}VV\\F^n&#64;&gt;{\mathcal{A}}&gt;&gt;F^m\end{CD}
+\end{equation*}
+</div>
+<p>故有以下定理：</p>
+<p>设 <span class="math">\(\phi\in Hom(V_1,V_2),dimV_1=n,dimV_2=m\)</span>.于 <span class="math">\(V_1.V_2\)</span>中分别取定一组(有序)基 <span class="math">\(\alpha_1,...,\alpha_n\)</span>与 <span class="math">\(\beta_1,...,\beta_m\)</span>后,以 <span class="math">\(\phi\alpha_1,...,\phi\alpha_n\)</span>的坐标列作矩阵 <span class="math">\(A\)</span>,即 <span class="math">\(\phi(\alpha_1,...,\alpha_n)=(\beta_1,...,\beta_m)A\)</span>.则 <span class="math">\(\forall\alpha\in V_1,\beta=A\alpha\Leftrightarrow y=Ax\)</span>.其中 <span class="math">\(x,y\)</span>分别为 <span class="math">\(\alpha,\beta\)</span>的坐标列. <span class="math">\(A\)</span>称为 <span class="math">\(\phi\)</span>的矩阵表示.</p>
+</div>
+<div class="section" id="id3">
+<h2>矩阵的四个空间</h2>
+<p>设 <span class="math">\(\mathcal{A}:F_n\to F_m,x\mapsto Ax\)</span>的伴随为 <span class="math">\(\mathcal{A}^\star:F_n\to F_m,x\mapsto Ax\)</span>.则有:</p>
+<p><span class="math">\(A\)</span>的右零空间 <span class="math">\(=ker\mathcal{A}=\{x\mid Ax=0\}=\{x^T\mid x^TA^T=0\}=ker\mathcal{A}^\star=A^T\)</span>的左零空间.</p>
+<p><span class="math">\(A\)</span>的列空间 <span class="math">\(=Im\mathcal{A}=&lt;\alpha_1,...,\alpha_n&gt;=&lt;(\alpha_1^T)^T,...,(\alpha_n^T)^T&gt;=Im\mathcal{A}^\star=A^T\)</span>的左零空间.</p>
+<p><span class="math">\(ker\mathcal{A}\oplus Im\mathcal{A}^\star=F^n\)</span></p>
+<p><span class="math">\(ker\mathcal{A}^\star\oplus Im\mathcal{A}=F^m\)</span></p>
+</div>
+<div class="section" id="id4">
+<h2>矩阵的逆，左逆，右逆</h2>
+<p><span class="math">\(A\)</span>列满秩 <span class="math">\(\Leftrightarrow A\)</span>有左逆 <span class="math">\(\Leftrightarrow\mathcal{A}\)</span>是单射, <span class="math">\(\mathcal{A}^\star\)</span>是满射 <span class="math">\(\Leftrightarrow\)</span> <span class="math">\(dimker\mathcal{A}=0,dimker\mathcal{A}^\star=m-n.dimIm\mathcal{A}=dimIm\mathcal{A}^\star=n\)</span>.</p>
+<p><span class="math">\(A\)</span>行满秩 <span class="math">\(\Leftrightarrow A\)</span>有右逆 <span class="math">\(\Leftrightarrow\mathcal{A}\)</span>是满射, <span class="math">\(\mathcal{A}^\star\)</span>是单射 <span class="math">\(\Leftrightarrow\)</span> <span class="math">\(dimker\mathcal{A}=n-m,dimker\mathcal{A}^\star=0.dimIm\mathcal{A}=dimIm\mathcal{A}^\star=m\)</span>.</p>
+<p><span class="math">\(A\)</span>可逆 <span class="math">\(\Leftrightarrow A\)</span>有左逆且 <span class="math">\(A\)</span>有右逆.</p>
+</div>
+<script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+
+        
+    </div>
+        <!-- /Content --> 
+
+        <!-- Footer -->
+        <div class="footer gradient-2">
+            <div class="container footer-container ">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title">Sitemap</div>
+                        <ul class="list-unstyled">
+                            <li><a href="/archives.html">Archives</a></li>
+                            <li><a href="/tags.html">Tags</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title">Social</div>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.zhihu.com/people/wanghao1405" target="_blank">Zhihu</a></li>
+                            <li><a href="https://weibo.com/alpha97" target="_blank">Weibo</a></li>
+                            <li><a href="https://github.com/Alpha-W" target="_blank">Github</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title">Links</div>
+                        <ul class="list-unstyled">
+                            <li><a href="https://getpelican.com/" target="_blank">Pelican</a></li>
+                            <li><a href="https://www.python.org/" target="_blank">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/" target="_blank">Jinja2</a></li>
+                        </ul>
+                    </div> 
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <p class="pull-right text-right">
+                            <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
+                            <small><em>Theme and code by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br/>
+                            <small>&copy; IdeleHub 2020</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Footer -->
+    </body>
+</html>

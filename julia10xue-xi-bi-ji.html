@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="开始 与Python类似，Julia支持REPL模式，可以在命令行中编写Julia程序． 若要退出，可键入Ctrl + D,或用exit()语句． 先试试一些数学表达式吧: julia&gt; 1+2*(3/4+1/3) 3.1666666666666665 julia&gt; ans*12 38.0...">
+        <meta name="keywords" content="">
+        <link rel="icon" href="/favicon.ico">
+        <!-- Canonical -->
+        <link rel="canonical" href="/julia10xue-xi-bi-ji.html">
+        <!-- /Canonical -->
+
+        <title>Julia1.0学习笔记 - </title>
+
+        <!-- Stylesheets -->
+        <link href="/theme/css/all.min.css" rel="stylesheet">
+        <!-- /Stylesheets -->
+
+        <!-- RSS Feeds -->
+        <!-- /RSS Feeds -->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+    <div class="header-container gradient">
+
+            <!-- Static navbar -->
+            <div class="container">
+                <div class="header-nav">
+                    <div class="header-logo">
+                        <a class="pull-left" href="/"><img class="mr20" src="/images/logo.png" alt="logo"></a>
+                    </div>
+                    <div class="nav pull-right">
+                                <a href="/index.html">主页</a>
+                                <a href="/categories.html">存档</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /Static navbar -->
+
+            <!-- Header -->
+    <!-- Header -->
+    <div class="container header-wrapper">
+        <div class="row">
+              <div class="col-lg-12">
+                  <div class="header-content">
+                      <h1 class="header-title">Julia1.0学习笔记</h1>
+                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 六 11 八月 2018, in category <a href="/category/bian-cheng-yu-yan.html">编程语言</a></p>
+                      <div class="header-underline"></div>
+                      <div class="clearfix"></div>
+                      <p class="pull-right header-tags">
+                          <span class="glyphicon glyphicon-tags mr5" aria-hidden="true"></span>
+                      </p>
+                  </div>
+              </div>
+        </div>
+    </div>
+    <!-- /Header -->
+            <!-- /Header -->
+
+        </div>
+        <!-- /Header -->
+
+
+        <!-- Content -->
+    <div class="container content">
+        <div class="section" id="id1">
+<h2>开始</h2>
+<p>与Python类似，Julia支持REPL模式，可以在命令行中编写Julia程序．</p>
+<p>若要退出，可键入Ctrl + D,或用exit()语句．</p>
+<p>先试试一些数学表达式吧:</p>
+<p>julia&gt; 1+2*(3/4+1/3)</p>
+<p>3.1666666666666665</p>
+<p>julia&gt; ans*12</p>
+<p>38.0</p>
+<p>可以看出julia支持四则运算的直接输出,ans为上一步的计算结果．如果不想输出结果，可以在表达式末尾加分号（;）．这与Matlab是一致的．</p>
+<p>我们可以将表达式写在文件file里，然后使用命令include(“file”)即可计算结果</p>
+<p>另一种方式是在命令行模式下（没有进入julia）键入julia script arg1 arg2 ...</p>
+<p>这里script文件里已经写好了julia程序，arg1 arg2 ...为输入的参数．同样可以计算结果</p>
+<p>julia命令内置了一些选项，可以在命令行模式下用julia -h 或julia --help　查看：</p>
+</div>
+<div class="section" id="id2">
+<h2>变量</h2>
+<p>所有的变量名都是引用，故没有严格的类型审查机制：</p>
+<p>julia&gt; x=1</p>
+<p>1</p>
+<p>julia&gt; x=”Hello World!”</p>
+<p>”Hello World!”</p>
+<p>不仅支持Unicode字符串，还支持Unicode字符作变量名：</p>
+<p>julia&gt; proverb = “朝霞不出门，晚霞行千里”</p>
+<p>“朝霞不出门，晚霞行千里”</p>
+<p>julia&gt; 数学=”mathematics”</p>
+<p>”mathematics”</p>
+<p>甚至支持用LaTeX表示符号,比如要打出＂δ＂，可以输入＼delta再加tab键即可．</p>
+<p>julia预定义了一些变量与函数，如pi,sqrt()等等,并且可以自己重新定义变量：</p>
+<p>julia&gt; pi=3</p>
+<p>3</p>
+<p>julia&gt; pi</p>
+<p>3</p>
+<p>但如果之前就使用过某预定义变量，则再重新定义此变量会报错：</p>
+<p>julia&gt; pi</p>
+<p>π=3.1415926535897...</p>
+<p>julia&gt; pi=3</p>
+<p>ERROR: cannot assign variable MathConstants.pi from module Main</p>
+<p>变量名可以以英文字母，下划线，以及Unicode码中大于00A0的字符开头．</p>
+<p>变量名使用运算符时，运算符不会被视为变量名的一部分;用关键字作变量名会报错．</p>
+<p>julia&gt; !+r=1</p>
+<p>ERROR: syntax: &quot;+(r)&quot; is not a valid function argument name</p>
+<p>julia&gt; else=1</p>
+<p>ERROR: syntax: unexpected &quot;else&quot;</p>
+<p>julia变量命名规范：</p>
+<p>１．变量名应使用小写字母</p>
+<p>２．在不影响阅读的情况下单词之间不使用分隔符，特殊情况下使用下划线分隔单词</p>
+<p>３．类型(Type)名与模块(Module)名以大写字母开头，单词之间的分隔以大写字母来体现</p>
+<p>４．函数(functions)名与宏(micros)名使用小写字母，不使用下划线</p>
+<p>５．函数名的选择应见名知意</p>
+<p>---------------------------------------------------2018.08.11---------------------------------------</p>
+</div>
+<div class="section" id="id3">
+<h2>整数与浮点数</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="15%" />
+<col width="18%" />
+<col width="16%" />
+<col width="15%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>&nbsp;</td>
+<td>类型</td>
+<td>长度(bit)</td>
+<td>最小值</td>
+<td>最大值</td>
+<td>特殊值</td>
+</tr>
+<tr><td>整数</td>
+<td>Int8</td>
+<td>8</td>
+<td>-2^7</td>
+<td>2^7-1</td>
+<td>无</td>
+</tr>
+<tr><td>Int16</td>
+<td>16</td>
+<td>-2^15</td>
+<td>2^15-1</td>
+<td>无</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Int32</td>
+<td>32</td>
+<td>-2^31</td>
+<td>2^31-1</td>
+<td>无</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Int64</td>
+<td>64</td>
+<td>-2^63</td>
+<td>2^63-1</td>
+<td>无</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Int128</td>
+<td>128</td>
+<td>-2^127</td>
+<td>2^127-1</td>
+<td>无</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Int   (1*)</td>
+<td>32/64</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>BigInt</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>无</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>无符号整数</td>
+<td>UInt8</td>
+<td>8</td>
+<td>0</td>
+<td>2^8-1</td>
+<td>无</td>
+</tr>
+<tr><td>UInt16</td>
+<td>16</td>
+<td>0</td>
+<td>2^16-1</td>
+<td>无</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>UInt32</td>
+<td>32</td>
+<td>0</td>
+<td>2^32-1</td>
+<td>无</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>UInt64</td>
+<td>64</td>
+<td>0</td>
+<td>2^64-1</td>
+<td>无</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>UInt128</td>
+<td>128</td>
+<td>0</td>
+<td>2^128-1</td>
+<td>无</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>UInt  (1*)</td>
+<td>32/64</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>布尔值</td>
+<td>Bool</td>
+<td>8</td>
+<td>false(0)</td>
+<td>true(1)</td>
+<td>无</td>
+</tr>
+<tr><td>浮点数</td>
+<td>Float16</td>
+<td>16</td>
+<td>-Inf16</td>
+<td>Inf16</td>
+<td>NaN16</td>
+</tr>
+<tr><td>Float32</td>
+<td>32</td>
+<td>-Inf32</td>
+<td>Inf32</td>
+<td>NaN32</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Float64</td>
+<td>64</td>
+<td>-Inf64</td>
+<td>Inf64</td>
+<td>NaN64</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Float  (1*)</td>
+<td>32/64</td>
+<td>-Inf</td>
+<td>Inf</td>
+<td>NaN</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>BigFloat</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>-Inf</td>
+<td>Inf</td>
+<td>NaN</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>(1*):</p>
+<p>Int,UInt,Float,Inf,NaN与操作系统位数有关</p>
+<p>32位系统上对应xxx32,64位系统上对应xxx64</p>
+<p>先介绍几个函数：</p>
+<p>typeof(a) 返回a的类型；</p>
+<p>typemax(t) 返回类型t的最大值</p>
+<p>typemin(t) 返回类型t的最小值</p>
+<p>整数</p>
+<p>整数字面量一般默认类型为Int,但当字面量数值超出Int范围时，则转换为更高位数的整数型:</p>
+<p>julia&gt; typeof(1)</p>
+<p>Int64</p>
+<p>julia&gt; typeof(9223372036854775808)</p>
+<p>Int128</p>
+<p>二进制，八进制，十六进制字面量分别以0b,0o,0x开头，julia均视之为无符号整数．</p>
+<p>所占位数由字面量值决定.其输出格式均为十六进制：</p>
+<p>julia&gt; typeof(0b01)</p>
+<p>UInt8</p>
+<p>julia&gt; typeof(0o777)</p>
+<p>UInt16</p>
+<p>julia&gt; typeof(0xffffff)</p>
+<p>UInt32</p>
+<p>julia&gt; typeof(0b111111111111)</p>
+<p>UInt16</p>
+<p>julia&gt; typeof(0xf)</p>
+<p>UInt8</p>
+<p>julia&gt; 0o77777</p>
+<p>0x7fff</p>
+<p>对一个二进制，八进制，十六进制数取补码可用”-”符号：</p>
+<p>julia&gt; -0x0f</p>
+<p>0xf1</p>
+<p>当整数作运算后超出所属类型的范围时会发生溢出，具体行为与Ｃ语言中整数溢出行为类似，</p>
+<p>整数除法（÷）在以下两种情况下会抛出异常（DivideError）:</p>
+<p>(1)　某一整数除以0时;</p>
+<ol class="arabic simple" start="2">
+<li>typemin(Int)除以-1时．(将Int换为大于Int位数的整数类型也会异常)</li>
+</ol>
+<p>julia&gt; typemax(Int64)+1==typemin(Int64)</p>
+<p>true</p>
+<p>julia&gt; typemax(Int8)+1==typemin(Int8)</p>
+<p>false                                                                                           (2*)</p>
+<p>julia&gt; typemin(Int64)÷(-1)</p>
+<p>ERROR: DivideError: integer division error</p>
+<p>julia&gt; typemin(Int8)÷(-1)</p>
+<p>128                                                                                                     (2*)</p>
+<p>julia&gt; 1÷0</p>
+<p>ERROR: DivideError: integer division error</p>
+<p>(2*) 这是因为typemin(Int8)是Int类型</p>
+<p>我们可以使用BigInt类型来避免溢出的发生：</p>
+<p>julia&gt; typemax(Int64)+1&gt;0</p>
+<p>false</p>
+<p>julia&gt; BigInt(typemax(Int64))+1&gt;0</p>
+<p>true</p>
+<p>浮点数</p>
+<p>以下为浮点数表示的几个例子：</p>
+<p>julia&gt; 10_000.</p>
+<p>10000.0</p>
+<p>julia&gt; -.23</p>
+<p>-0.23</p>
+<p>julia&gt; 1e10</p>
+<p>1.0e10</p>
+<p>julia&gt; 2.5e-4</p>
+<p>0.00025</p>
+<p>julia&gt; typeof(0.5e0)</p>
+<p>Float64</p>
+<p>julia&gt; 0x.4p-1</p>
+<p>0.125</p>
+<p>julia&gt; typeof(0x1p0)</p>
+<p>Float64</p>
+<p>与整数不同的是，浮点数字面量默认类型均为Float64．</p>
+<p>如果需要Float32类型的浮点数，可以用f替换上例中的e来表示：</p>
+<p>julia&gt; typeof(0.5f0)</p>
+<p>Float32</p>
+<p>还可以用Float32()函数转换成Float32类型：</p>
+<p>julia&gt; typeof(Float32(0.5))</p>
+<p>Float32</p>
+<p>而Float16类型的浮点数只能通过Float16()转换得到，不仅如此，这一类型浮点数也只能以Float16()的形式打印．</p>
+<p>julia&gt; Float16(8)+Float16(1.2)</p>
+<p>Float16(9.2)</p>
+<p>浮点数有两种零，一个是正零，一个是负零，两者值相等，但存储的数位不同：</p>
+<p>利用bitstring()函数，我们可以了解数是以怎样的形式存储的．</p>
+<p>julia&gt; 0.0==-0.0</p>
+<p>true</p>
+<p>julia&gt; bitstring(0.0)</p>
+<p>&quot;0000000000000000000000000000000000000000000000000000000000000000&quot;</p>
+<p>julia&gt; bitstring(-0.0)</p>
+<p>&quot;1000000000000000000000000000000000000000000000000000000000000000&quot;</p>
+<p>Inf,-Inf,NaN,0的关系：a/0=sgn(a)Inf         a/Inf=sgn(a)0.0         a/-Inf=-sgn(a)0.0</p>
+<p>a+Inf=Inf               a-Inf=-Inf              0/0=NaN Inf+Inf=NaN     Inf-Inf=NaN</p>
+<p>Inf*Inf=Inf             Inf/Inf=NaN             0*Inf=NaN</p>
+<p>(a为有限数)</p>
+<p>与Int类型类似，Float类型也有对应的BigFloat类型，主要用于高精度数值的计算：</p>
+<p>julia&gt; 1.0/3</p>
+<p>0.3333333333333333</p>
+<p>julia&gt; BigFloat(1.0)/3</p>
+<p>3.333333333333333333333333333333333333333333333333333333333333333333333333333348e-01</p>
+<p>parse()函数可以将字符串转化成指定类型的整数，浮点数，布尔值</p>
+<p>julia&gt; parse(Int64,&quot;64&quot;)</p>
+<p>64</p>
+<p>julia&gt; parse(Bool,&quot;true&quot;)</p>
+<p>true</p>
+<p>julia&gt; parse(Float64,&quot;0.0&quot;)</p>
+<p>0.0</p>
+<p>我们可以用setrounding()函数来指定BigFloat是向上舍入还是向下舍入，还可以用setprecision()函数来指定精度．一旦设定这两个函数，以后所有BigFloat的行为都会按照设定的返回结果．如果只想若干条语句执行此设定的话，可以用do代码块实现：</p>
+<p>julia&gt; setrounding(BigFloat, RoundUp) do</p>
+<p>​    BigFloat(1) + parse(BigFloat,&quot;0.1&quot;)</p>
+<p>​    end</p>
+<p>1.100000000000000000000000000000000000000000000000000000000000000000000000000003</p>
+<p>julia&gt; setrounding(BigFloat, RoundDown) do</p>
+<p>​    BigFloat(1) + parse(BigFloat,&quot;0.1&quot;)</p>
+<p>​    end</p>
+<p>1.099999999999999999999999999999999999999999999999999999999999999999999999999986</p>
+<p>julia&gt; setprecision(10) do</p>
+<p>​    BigFloat(1)+parse(BigFloat,&quot;0.1&quot;)</p>
+<p>​    end</p>
+<p>1.0996</p>
+<p>julia&gt; setprecision(20) do</p>
+<p>​    BigFloat(1)+parse(BigFloat,&quot;0.1&quot;)</p>
+<p>​    end</p>
+<p>1.1000004</p>
+<p>注：setprecision(t)表示精度为(1/2)^t.</p>
+<p>机器零</p>
+<p>与Ｃ语言类似，julia也不能完整表示所有实数．如果两个实数的距离比某指定距离更小，julia就认为这两个实数相等，这个指定的距离就称之为＂机器零＂</p>
+<p>可用eps()函数来查看机器零数值：</p>
+<p>julia&gt; eps(Float16)</p>
+<p>Float16(0.000977)</p>
+<p>julia&gt; eps(Float32)</p>
+<p>1.1920929f-7</p>
+<p>julia&gt; eps(Float64)</p>
+<p>2.220446049250313e-16</p>
+<p>julia&gt; eps()</p>
+<p>2.220446049250313e-16</p>
+<p>当然，与Ｃ语言稍微不同的是，julia的＂机器零＂是会变化的：机器零的数量级始终会与输入的数的数量级保持一定差距．</p>
+<p>julia&gt; eps(Float64)</p>
+<p>2.220446049250313e-16</p>
+<p>julia&gt; eps(1e-27)</p>
+<p>1.793662034335766e-43</p>
+<p>julia&gt; eps(1e-44)</p>
+<p>1.2446030555722283e-60</p>
+<p>julia&gt; eps(0.0)</p>
+<p>5.0e-324</p>
+<p>大概你也猜出来了，最小的机器零就是5.0e-324,比这个数还小时,机器零就不会发生变化．</p>
+<p>julia&gt; eps(1e-325)</p>
+<p>5.0e-324</p>
+<p>julia提供nextfloat()与prevfloat()函数来得到某一浮点数的下一个浮点数与上一个浮点数，它们的二进制位分别是在原有浮点数上加一或减一得到的．</p>
+<p>julia&gt; x=1.0f0</p>
+<p>1.0f0</p>
+<p>julia&gt; prevfloat(x)</p>
+<p>0.99999994f0</p>
+<p>julia&gt; nextfloat(x)</p>
+<p>1.0000001f0</p>
+<p>julia&gt; bitstring(prevfloat(x))</p>
+<p>&quot;00111111011111111111111111111111&quot;</p>
+<p>julia&gt; bitstring(x)</p>
+<p>&quot;00111111100000000000000000000000&quot;</p>
+<p>julia&gt; bitstring(nextfloat(x))</p>
+<p>&quot;00111111100000000000000000000001&quot;</p>
+<p>字面量系数</p>
+<p>在C语言中输入多项式是一件很烦恼的事，一连串的＊号让人头昏眼花．．．而在julia中，字面量作为变量的系数时可以省略＊号，不过要注意的是:</p>
+<p>１．这种运算的优先级高于乘法（＊）和除法（／，＼，／／）,低于负号．比如-1/2x会被解析成-1/(2x)而不是(-1/2)x</p>
+<p>２．在与指数运算符结合时，这种运算表现出类似一元运算符的性质．2^3x与2x^3分别被解析为2^(3x)与2(x^3)</p>
+<p>此外，julia还支持多项式与单项式相乘省略乘号，比如(x^2+1)x被解析成(x^2+1)＊x</p>
+<p>不过在某些情况下这样的代码会让人困惑．为避免歧义，julia还是作了如下规定：</p>
+<p>１．以0x开头的十六进制数不会被当作0和一个以”x”开头的变量相乘</p>
+<p>２．以科学计数法表示的数不会被当作一个数和一个以”e”，”E”或”f”开头的变量相乘</p>
+<p>０与１</p>
+<p>最后介绍两个函数：zero()和one()．正如函数名那样，这两个函数分别返回参数类型的＂０＂与＂１＂，如果参数就是类型的话就返回该类型的＂０＂与＂１＂：</p>
+<p>julia&gt; zero(1.0)</p>
+<p>0.0</p>
+<p>julia&gt; one(Int8)</p>
+<p>1</p>
+<p>julia&gt; one(Float16)</p>
+<p>Float16(1.0)</p>
+<p>----------------------------------------------2018.9.22-------------------------------------------------</p>
+</div>
+<div class="section" id="id4">
+<h2>数学运算符与基本函数</h2>
+<p>算术运算符：</p>
+<p>以下运算符支持所有基本数值类型（除!x外）</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>表达式</td>
+<td>说明</td>
+</tr>
+<tr><td>+x</td>
+<td>恒等运算符</td>
+</tr>
+<tr><td>-x</td>
+<td>x的加法逆元</td>
+</tr>
+<tr><td>x+y</td>
+<td>x与y之和</td>
+</tr>
+<tr><td>x-y</td>
+<td>x与y之差</td>
+</tr>
+<tr><td>x/y</td>
+<td>x与y之商</td>
+</tr>
+<tr><td>x*y</td>
+<td>x与y之积</td>
+</tr>
+<tr><td>x÷y</td>
+<td>x与y之商并向零取整</td>
+</tr>
+<tr><td>x\y</td>
+<td>y与x之商</td>
+</tr>
+<tr><td>x^y</td>
+<td>x的y次方</td>
+</tr>
+<tr><td>x%y</td>
+<td>x对y取余</td>
+</tr>
+<tr><td>!x</td>
+<td>(仅支持Bool类型)　取x取否运算</td>
+</tr>
+</tbody>
+</table>
+<p>位运算符：</p>
+<p>以下运算符支持所有基本整数类型</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>表达式</td>
+<td>说明</td>
+</tr>
+<tr><td>~x</td>
+<td>x逐位取非</td>
+</tr>
+<tr><td>x&amp;y</td>
+<td>x与y逐位取且</td>
+</tr>
+<tr><td>x|y</td>
+<td>x与y逐位取或</td>
+</tr>
+<tr><td>x⊻y</td>
+<td>x与y逐位取异或</td>
+</tr>
+<tr><td>x&gt;&gt;&gt;y</td>
+<td>x逻辑右移y位</td>
+</tr>
+<tr><td>x&gt;&gt;y</td>
+<td>x算术右移y位</td>
+</tr>
+<tr><td>x&lt;&lt;y</td>
+<td>x算术左移y位</td>
+</tr>
+</tbody>
+</table>
+<p>更新运算符：</p>
+<p>所有二元算术运算符与所有二元位运算符均支持更新操作：将该运算符与等号组合，表示左值与右值作该运算后将值赋给左值．</p>
+<p>向量化的点运算符</p>
+<p>点运算符可以与所有二元运算符（包括用户定义的）结合，表示对向量的每个分量作该运算．多个点运算符的计算顺序与单个分量的运算顺序一致．部分点运算符需要加空格以消除歧义：</p>
+<p>julia&gt; x=[1,2,3]</p>
+<p>3-element Array{Int64,1}:</p>
+<blockquote>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+</blockquote>
+<p>julia&gt; 1.+x</p>
+<p>ERROR: syntax: invalid syntax &quot;1.+&quot;; add space(s) to clarify</p>
+<p>julia&gt; 1 .+x</p>
+<p>3-element Array{Int64,1}:</p>
+<blockquote>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+</blockquote>
+<p>julia&gt; y=1</p>
+<p>1</p>
+<p>julia&gt; 1. +y</p>
+<p>2.0</p>
+<p>数值的比较：</p>
+<p>标准比较运算符支持所有基本数值类型</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>操作符</td>
+<td>说明</td>
+</tr>
+<tr><td>==</td>
+<td>相等</td>
+</tr>
+<tr><td>!=,≠</td>
+<td>不相等</td>
+</tr>
+<tr><td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr><td>&lt;=,≦</td>
+<td>小于等于</td>
+</tr>
+<tr><td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr><td>&gt;=,≧</td>
+<td>大于等于</td>
+</tr>
+</tbody>
+</table>
+<p>整数判断是否相等的条件是每个二进制位是否相等，浮点数判断相等依据IEEE754标准：</p>
+<p>1. 有限数按照通常顺序比较大小</p>
+<p>2. +0.0与-0.0相等</p>
+<p>3. Inf和他自己相等，且除了NaN之外比任何数都大,与NaN只有不相等成立</p>
+<p>4. -Inf和他自己相等，且除了NaN之外比任何数都小,与NaN只有不相等成立</p>
+<p>5. NaN与任何数只有不相等成立</p>
+<p>两个向量的大小按字典序排序，长度为a的向量与长度为b的向量（a&lt;b）比较时,只会取前a个分量比较，在比较的分量中如果存在NaN,那么这两个向量只有不相等成立．</p>
+<p>数值相同的整数和浮点数相等</p>
+<p>Julia还提供一些检验特殊值的函数：这些函数是通过hash值来检验的</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>函数</td>
+<td>说明</td>
+</tr>
+<tr><td>isequal(x,y)</td>
+<td>判断x与y是否相同（hash值）</td>
+</tr>
+<tr><td>isfinite(x)</td>
+<td>判断x是否有限</td>
+</tr>
+<tr><td>isinf(x)</td>
+<td>判断x是否无限(Inf,-Inf)</td>
+</tr>
+<tr><td>isnan(x)</td>
+<td>判断x是否非数(NaN)</td>
+</tr>
+</tbody>
+</table>
+<p>julia&gt; hash(1)==hash(1.0)</p>
+<p>true</p>
+<p>julia&gt; hash(NaN)==hash(NaN32)</p>
+<p>true</p>
+<p>julia&gt; isequal(NaN,NaN)</p>
+<p>true</p>
+<p>julia&gt; isequal([1 NaN],[1 NaN])</p>
+<p>true</p>
+<p>julia&gt; isequal(NaN32,NaN)</p>
+<p>true</p>
+<p>julia&gt; isequal(-0.0,0.0)</p>
+<p>false</p>
+</div>
+
+
+
+        
+    </div>
+        <!-- /Content --> 
+
+        <!-- Footer -->
+        <div class="footer gradient-2">
+            <div class="container footer-container ">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title">Sitemap</div>
+                        <ul class="list-unstyled">
+                            <li><a href="/archives.html">Archives</a></li>
+                            <li><a href="/tags.html">Tags</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title">Social</div>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.zhihu.com/people/wanghao1405" target="_blank">Zhihu</a></li>
+                            <li><a href="https://weibo.com/alpha97" target="_blank">Weibo</a></li>
+                            <li><a href="https://github.com/Alpha-W" target="_blank">Github</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title">Links</div>
+                        <ul class="list-unstyled">
+                            <li><a href="https://getpelican.com/" target="_blank">Pelican</a></li>
+                            <li><a href="https://www.python.org/" target="_blank">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/" target="_blank">Jinja2</a></li>
+                        </ul>
+                    </div> 
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <p class="pull-right text-right">
+                            <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
+                            <small><em>Theme and code by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br/>
+                            <small>&copy; IdeleHub 2020</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Footer -->
+    </body>
+</html>
