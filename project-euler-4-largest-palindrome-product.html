@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="15度角的正弦值 利用含30度角的直角三角形，我们可以得到15度角的正弦值。 设 \(\triangle FGH\)为直角三角形， \(\angle G=90^\circ,\angle HFG=30^\circ\),在射线 \(GF\)上取一点 \(I\),使 \(FI=FH\),联结 \(IH\). 因 \(FI=FH\),故 \(\angle I=\angle FHI\),再由...">
+        <meta name="description" content="Description Get. Code public class Main { public static boolean isPalindrome(int p) { int digit=1+(int)Math.log10(p); int[] a=new int[digit]; for(int k=0;k&lt;digit;k++)...">
         <meta name="keywords" content="">
         <link rel="icon" href="/favicon.ico">
         <!-- Canonical -->
-        <link rel="canonical" href="/15du-jiao-yu-18du-jiao-de-zheng-xian-zhi.html">
+        <link rel="canonical" href="/project-euler-4-largest-palindrome-product.html">
         <!-- /Canonical -->
 
-        <title>15度角与18度角的正弦值 - </title>
+        <title>Project Euler 4: Largest palindrome product - </title>
 
         <!-- Stylesheets -->
         <link href="/theme/css/all.min.css" rel="stylesheet">
@@ -55,8 +55,8 @@
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content">
-                      <h1 class="header-title">15度角与18度角的正弦值</h1>
-                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 五 13 一月 2012, in category <a href="/category/ji-he.html">几何</a></p>
+                      <h1 class="header-title">Project Euler 4: Largest palindrome product</h1>
+                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 三 30 十二月 2020, in category <a href="/category/suan-fa.html">算法</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
@@ -75,21 +75,44 @@
 
         <!-- Content -->
     <div class="container content">
-        <div class="section" id="id2">
-<h2>15度角的正弦值</h2>
-<p>利用含30度角的直角三角形，我们可以得到15度角的正弦值。</p>
-<p>设 <span class="math">\(\triangle FGH\)</span>为直角三角形， <span class="math">\(\angle G=90^\circ,\angle HFG=30^\circ\)</span>,在射线 <span class="math">\(GF\)</span>上取一点 <span class="math">\(I\)</span>,使 <span class="math">\(FI=FH\)</span>,联结 <span class="math">\(IH\)</span>.</p>
-<p>因 <span class="math">\(FI=FH\)</span>,故 <span class="math">\(\angle I=\angle FHI\)</span>,再由 <span class="math">\(\angle HFG=30^\circ ,\angle HFG=\angle I +\angle FHI\)</span>,得 <span class="math">\(\angle I=15^\circ\)</span>.</p>
-<p>因 <span class="math">\(\angle G=90^\circ,\angle HFG=30^\circ\)</span>,故 <span class="math">\(FG=\sqrt{3}GH,FH=2GH\)</span>,再由 <span class="math">\(FH=FI\)</span>,得 <span class="math">\(GI=(2+\sqrt{3})GH\)</span>,由勾股定理可得 <span class="math">\(HI=(\sqrt{6}+\sqrt{2})GH\)</span>,故</p>
-<p><span class="math">\(\sin 15^\circ=\frac{GH}{HI}=\frac{\sqrt{6}-\sqrt{2}}{4}\)</span></p>
+        <div class="section" id="description">
+<h2>Description</h2>
+<p><a class="reference external" href="https://projecteuler.net/problem=4">Get</a>.</p>
 </div>
-<div class="section" id="id3">
-<h2>18度角的正弦值</h2>
-<p>称顶角为36度的等腰三角形为黄金三角形,我们以此推导 <span class="math">\(\sin18^\circ\)</span>的表达式。
-设 <span class="math">\(\triangle ABC\)</span>为黄金三角形， <span class="math">\(AB=AC,\angle BAC=36^\circ\)</span>,过点 <span class="math">\(C\)</span>作 <span class="math">\(\angle ABC\)</span>的角平分线交 <span class="math">\(AB\)</span>于点 <span class="math">\(D\)</span>.</p>
-<p>故 <span class="math">\(\angle BCD=\angle ACD=36^\circ\)</span>,因 <span class="math">\(\angle B=72^\circ\)</span>,故 <span class="math">\(\angle BDC=72^\circ\)</span>,进而 <span class="math">\(\angle BCD=36^\circ,BC=CD\)</span>得 <span class="math">\(\triangle CBD\)</span>也是黄金三角形 因此 <span class="math">\(\triangle ABC\sim \triangle CBD\)</span>,再由相似三角形的性质，得 <span class="math">\(\frac{AB}{BC}=\frac{BC}{BD}\)</span>,即 <span class="math">\(BC=\sqrt{AB\cdot BD} \quad\)</span>①</p>
-<p>由 <span class="math">\(\angle BDC=72^\circ，\angle BAC=36^\circ\)</span>,得 <span class="math">\(\angle ACD=36^\circ=\angle BAC\)</span>,故有 <span class="math">\(AD=CD\)</span>,由 <span class="math">\(AB-BD=AD,BC=CD\)</span>以及①，可得 <span class="math">\(AB-BD=\sqrt{AB\cdot BD} \quad\)</span>解之得 <span class="math">\(\frac{AB}{BD}=\frac{3\pm\sqrt{5}}{2}。\)</span>因 <span class="math">\(AB&gt;BD\)</span>故 <span class="math">\(\frac{AB}{BD}=\frac{3+\sqrt{5}}{2}。\)</span>再由①得 <span class="math">\(BC=\sqrt{\frac{2}{3+\sqrt{5}}}AB\quad\)</span>②</p>
-<p>过点 <span class="math">\(A\)</span>作 <span class="math">\(AE\)</span>垂直与 <span class="math">\(BC\)</span>交 <span class="math">\(BC\)</span>于点 <span class="math">\(E\)</span>,因 <span class="math">\(AB=AC,\angle BAC=36^\circ\)</span>,故 <span class="math">\(\angle BAE=18^\circ,BE=\frac{1}{2}BC\)</span>,再由②可得 <span class="math">\(\sin 18^\circ=\frac{BE}{AB}=\frac{\frac{1}{2}BC}{AB}=\frac{\frac{1}{2}\cdot \sqrt{\frac{2}{3+\sqrt{5}}}AB}{AB}=\frac{\sqrt{5}-1}{4}\)</span></p>
+<div class="section" id="code">
+<h2>Code</h2>
+<pre class="code java literal-block">
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isPalindrome</span><span class="o">(</span><span class="kt">int</span> <span class="n">p</span><span class="o">)</span>
+<span class="o">{</span>
+ <span class="kt">int</span> <span class="n">digit</span><span class="o">=</span><span class="mi">1</span><span class="o">+(</span><span class="kt">int</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">log10</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
+ <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">digit</span><span class="o">];</span>
+ <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">k</span><span class="o">&lt;</span><span class="n">digit</span><span class="o">;</span><span class="n">k</span><span class="o">++)</span> <span class="n">a</span><span class="o">[</span><span class="n">k</span><span class="o">]=((</span><span class="n">p</span><span class="o">/(</span><span class="kt">int</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="n">k</span><span class="o">))%</span><span class="mi">10</span><span class="o">);</span>
+ <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">digit</span><span class="o">;</span> <span class="n">k</span><span class="o">++)</span>
+     <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">k</span><span class="o">]!=</span><span class="n">a</span><span class="o">[</span><span class="n">digit</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">k</span><span class="o">])</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+     <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+     <span class="kt">int</span> <span class="n">i</span><span class="o">,</span><span class="n">j</span><span class="o">,</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+     <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="mi">1000</span> <span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+         <span class="k">for</span> <span class="o">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span><span class="mi">1000</span> <span class="o">;</span> <span class="n">j</span><span class="o">++)</span>
+             <span class="k">if</span><span class="o">(</span><span class="n">isPalindrome</span><span class="o">(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="o">))</span> <span class="n">s</span><span class="o">=(</span><span class="n">s</span><span class="o">&gt;</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="o">?</span><span class="n">s</span><span class="o">:(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="o">));</span>
+             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span><span class="c1">//906609</span>
+</pre>
+</div>
+<div class="section" id="comments">
+<h2>Comments</h2>
+<p>欲计算整数 <span class="math">\(p\)</span>在 <span class="math">\(s\)</span>进制下的各项系数 <span class="math">\(a_{k}\)</span>，即求 <span class="math">\(p=\sum_{k=0}^{n}a_{k}s^{k}\)</span>中的 <span class="math">\(a_{k},k=0,...,n\)</span>,可以有以下两种方法：</p>
+<blockquote>
+<ol class="arabic simple">
+<li><span class="math">\(a_{k}=p/s^{k}%s\)</span></li>
+<li><span class="math">\(a_{k}=p%s^{k+1}%s^{k}\)</span></li>
+</ol>
+</blockquote>
+<p>注：这里&quot;/&quot;为整数除法，&quot;%&quot;为整数求余，即 <span class="math">\(a/b:=-sgn(\frac{a}{b})\lceil -\mid \frac{a}{b}\mid \rceil\)</span>, <span class="math">\(a%b:=a-b*(a/b)\)</span></p>
+<p>这里选用第一种，第二种不好的地方在于即使 <span class="math">\(p\)</span>不溢出， <span class="math">\(s^{k+1}\)</span>仍然可能会溢出。</p>
 </div>
 <script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",

@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Multiples of 3 and 5 If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5...">
+        <meta name="description" content="Description Get. class Solution { public boolean isPalindrome(int x) { if(x&lt;0) return false; else if(x==0) return true; else { int n=1+(int)(Math.log10(x)); int[] a=new int[n]; for(int...">
         <meta name="keywords" content="">
         <link rel="icon" href="/favicon.ico">
         <!-- Canonical -->
-        <link rel="canonical" href="/project-euler-1.html">
+        <link rel="canonical" href="/leetcode-9-palindrome-number.html">
         <!-- /Canonical -->
 
-        <title>Project Euler 1 - </title>
+        <title>Leetcode 9: Palindrome Number - </title>
 
         <!-- Stylesheets -->
         <link href="/theme/css/all.min.css" rel="stylesheet">
@@ -55,8 +55,8 @@
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content">
-                      <h1 class="header-title">Project Euler 1</h1>
-                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 五 31 八月 2018, in category <a href="/category/suan-fa.html">算法</a></p>
+                      <h1 class="header-title">Leetcode 9: Palindrome Number</h1>
+                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 日 13 十二月 2020, in category <a href="/category/suan-fa.html">算法</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
@@ -75,14 +75,24 @@
 
         <!-- Content -->
     <div class="container content">
-        <div class="section" id="multiples-of-3-and-5">
-<h2>Multiples of 3 and 5</h2>
-<p>If we list all the natural numbers below 10 that are multiples of 3  or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.</p>
-<p>Find the sum of all the multiples of 3 or 5 below 1000.</p>
-<p>答案：</p>
-<p>233168</p>
-<pre class="code matlab literal-block">
-<span class="n">sum</span><span class="p">(</span><span class="n">unique</span><span class="p">([</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">999</span><span class="p">]))</span>
+        <div class="section" id="description">
+<h2>Description</h2>
+<p><a class="reference external" href="https://leetcode.com/problems/palindrome-number">Get</a>.</p>
+<pre class="code java literal-block">
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isPalindrome</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+     <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+     <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+     <span class="k">else</span>
+     <span class="o">{</span>
+     <span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="o">+(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">log10</span><span class="o">(</span><span class="n">x</span><span class="o">));</span>
+     <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+     <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]=(</span><span class="n">x</span><span class="o">/((</span><span class="kt">int</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="n">i</span><span class="o">)))%</span><span class="mi">10</span><span class="o">;</span>
+     <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]!=</span><span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">])</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+     <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+     <span class="o">}</span>
+ <span class="o">}</span>
+<span class="o">}</span>
 </pre>
 </div>
 

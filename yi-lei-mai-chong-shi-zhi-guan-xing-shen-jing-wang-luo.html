@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="一.预备知识 \begin{equation*} \left\{ \begin{array}{lll}...">
+        <meta name="description" content="毕业设计的初稿，可惜被导师毙了 一.预备知识 \begin{equation*} \left\{ \begin{array}{lll}...">
         <meta name="keywords" content="">
         <link rel="icon" href="/favicon.ico">
         <!-- Canonical -->
@@ -75,7 +75,8 @@
 
         <!-- Content -->
     <div class="container content">
-        <div class="section" id="id2">
+        <p>毕业设计的初稿，可惜被导师毙了</p>
+<div class="section" id="id2">
 <h2>一.预备知识</h2>
 <div class="math">
 \begin{equation*}
@@ -239,47 +240,47 @@ V(t)\leq V(0)+\int_{0}^{t}\sum_{i=1}^{n}\sigma_{i}z_{i}^{2}(s)ds\tag{6}
 <p>由引理2及 <span class="math">\((7)\)</span>得：</p>
 <div class="math">
 \begin{align*}
-\forall \epsilon&gt;0,\exists\delta=\frac{\epsilon}{2R},s.t.\forall t^{\prime},t^{\prime\prime}\in [t_{k-1},t_{k}),k\in\mathbb{N^{+}},\mid t^{\prime}-t^{\prime\prime}\mid&lt;\delta,\\ \mid z_{i}(t^{\prime})-z_{i}(t^{\prime\prime})\mid\leq R\mid t^{\prime}-t^{\prime\prime}\mid=\frac{\epsilon}{2},i=1,2,...,n\tag{9}
+\forall \varepsilon&gt;0,\exists\delta=\frac{\varepsilon}{2R},s.t.\forall t^{\prime},t^{\prime\prime}\in [t_{k-1},t_{k}),k\in\mathbb{N^{+}},\mid t^{\prime}-t^{\prime\prime}\mid&lt;\delta,\\ \mid z_{i}(t^{\prime})-z_{i}(t^{\prime\prime})\mid\leq R\mid t^{\prime}-t^{\prime\prime}\mid=\frac{\varepsilon}{2},i=1,2,...,n\tag{9}
 \end{align*}
 </div>
 <p>由假设3.令 <span class="math">\(\bar{\delta}=min\{\delta,\frac{\theta}{2}\}\)</span>,其中 <span class="math">\(\theta=inf\{t_{k}-t_{k-1}\}&gt;0\)</span>,记 <span class="math">\(\sigma=min\{-\sigma_{i}\}&gt;0\)</span></p>
 <p>由 <span class="math">\((6),\int_{0}^{t}\mid z_{i}(s)\mid^{2} ds\leq\int_{0}^{t}\sum_{i=1}^{n}z_{i}^{2}(s)ds\leq\frac{1}{\sigma}\int_{0}^{t}(-\sigma_{i})z_{i}^{2}(s)ds&lt;+\infty\)</span></p>
 <p>可得 <span class="math">\(\lim_{t_{k}\to+\infty}\int_{t_{k}}^{t_{k}+\bar{\delta}}\mid z_{i}(s)\mid^{2}ds=0\)</span></p>
 <p>由引理3, <span class="math">\(\int_{t_{k}}^{t_{k}+\bar{\delta}}\mid z_{i}(s)\mid ds\leq\sqrt{\bar{\delta}\int_{t_{k}}^{t_{k}+\bar{\delta}}\mid z_{i}(s)\mid^{2}ds}\to0,t_{k}\to\infty\)</span></p>
-<p>故对上述取定的 <span class="math">\(\epsilon,\exists\ T=T(\epsilon)&gt;0,s.t. t_{k}&gt;T,\ \int_{t_{k}}^{t_{k}+\bar{\delta}}\mid z_{i}(s)\mid ds&lt;\frac{\epsilon}{2}\bar{\delta}\)</span></p>
+<p>故对上述取定的 <span class="math">\(\varepsilon,\exists\ T=T(\varepsilon)&gt;0,s.t. t_{k}&gt;T,\ \int_{t_{k}}^{t_{k}+\bar{\delta}}\mid z_{i}(s)\mid ds&lt;\frac{\varepsilon}{2}\bar{\delta}\)</span></p>
 <p>因 <span class="math">\(\mid z_{i}(t)\mid\)</span>在 <span class="math">\([t_{k},t_{k}+\bar{\delta})\)</span>处连续,由引理4, <span class="math">\(\exists\)</span>常数 <span class="math">\(\xi_{k}\in[t_{k},t_{k}+\bar{\delta})\)</span>使得</p>
-<p><span class="math">\(\mid z_{i}(\xi_{k})\mid\bar{\delta}=\int_{t_{k}}^{t_{k}+\bar{\delta}}\mid z_{i}(s)\mid ds&lt;\frac{\epsilon}{2}\bar{\delta}\)</span>,故有</p>
+<p><span class="math">\(\mid z_{i}(\xi_{k})\mid\bar{\delta}=\int_{t_{k}}^{t_{k}+\bar{\delta}}\mid z_{i}(s)\mid ds&lt;\frac{\varepsilon}{2}\bar{\delta}\)</span>,故有</p>
 <div class="math">
 \begin{equation*}
-\mid z_{i}(\xi_{k})\mid &lt;\frac{\epsilon}{2}\tag{10}
+\mid z_{i}(\xi_{k})\mid &lt;\frac{\varepsilon}{2}\tag{10}
 \end{equation*}
 </div>
-<p>结合 <span class="math">\((9),(10)\)</span>可得 <span class="math">\(\forall \epsilon&gt;0,\exists\ T=T(\epsilon)&gt;0,s.t. t_{k}&gt;T\)</span>,</p>
-<p><span class="math">\(\mid z_{i}(t_{k})\mid\leq\mid z_{i}(t_{k})-z_{i}(\xi_{k})\mid+\mid z_{i}(\xi_{k})\mid\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon\)</span> 故 <span class="math">\((8)\)</span>得证.</p>
+<p>结合 <span class="math">\((9),(10)\)</span>可得 <span class="math">\(\forall \varepsilon&gt;0,\exists\ T=T(\varepsilon)&gt;0,s.t. t_{k}&gt;T\)</span>,</p>
+<p><span class="math">\(\mid z_{i}(t_{k})\mid\leq\mid z_{i}(t_{k})-z_{i}(\xi_{k})\mid+\mid z_{i}(\xi_{k})\mid\leq\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\)</span> 故 <span class="math">\((8)\)</span>得证.</p>
 <p>再证 <span class="math">\(\lim_{t\to\infty}\mid z_{i}(t)\mid=0,i=1,2,...n\tag{11}\)</span></p>
 <p>由 <span class="math">\((9)\)</span>:</p>
 <div class="math">
 \begin{align*}
-\forall \epsilon&gt;0,\exists\delta=\frac{\epsilon}{2R},s.t.\forall t^{\prime},t^{\prime\prime}\in [t_{k-1},t_{k}),k\in\mathbb{N^{+}},\mid t^{\prime}-t^{\prime\prime}\mid&lt;\delta,\\ \mid z_{i}(t^{\prime})-z_{i}(t^{\prime\prime})\mid\leq R\mid t^{\prime}-t^{\prime\prime}\mid=\frac{\epsilon}{2},i=1,2,...,n\tag{12}
+\forall \varepsilon&gt;0,\exists\delta=\frac{\varepsilon}{2R},s.t.\forall t^{\prime},t^{\prime\prime}\in [t_{k-1},t_{k}),k\in\mathbb{N^{+}},\mid t^{\prime}-t^{\prime\prime}\mid&lt;\delta,\\ \mid z_{i}(t^{\prime})-z_{i}(t^{\prime\prime})\mid\leq R\mid t^{\prime}-t^{\prime\prime}\mid=\frac{\varepsilon}{2},i=1,2,...,n\tag{12}
 \end{align*}
 </div>
 <p>由 <span class="math">\((8)\)</span>,</p>
 <div class="math">
 \begin{equation*}
-\exists\ T_{1}=T_{1}(\epsilon)&gt;0 \ s.t.\mid z_{i}(t_{k})\mid &lt;\frac{\epsilon}{2},\forall t_{k}&gt;T_{1}\tag{13}
+\exists\ T_{1}=T_{1}(\varepsilon)&gt;0 \ s.t.\mid z_{i}(t_{k})\mid &lt;\frac{\varepsilon}{2},\forall t_{k}&gt;T_{1}\tag{13}
 \end{equation*}
 </div>
 <p>由引理3类似可得, <span class="math">\(\lim_{t\to+\infty}\int_{t}^{t+\bar{\delta}}\mid z_{i}(s)\mid ds=0\)</span>, <span class="math">\(\bar{\delta}=min\{\delta,\frac{\theta}{2}\}\)</span>,其中 <span class="math">\(\theta=inf\{t_{k}-t_{k-1}\}&gt;0\)</span></p>
-<p>故对上述取定的 <span class="math">\(\epsilon\)</span><span class="math">\(\exists\ T_{2}=T_{2}(\epsilon)&gt;0,s.t. t&gt;T_{2},\ \int_{t-\bar{\delta}}^{t}\mid z_{i}(s)\mid ds&lt;\frac{\epsilon}{2}\bar{\delta}\tag{14}\)</span></p>
-<p>令 <span class="math">\(T^{*}=min\{t_{q}\mid t_{q}&gt;max\{T_{1},T_{2}\}q\in\mathbb{N_{+}}\}\)</span>,则我们断言： <span class="math">\(\mid z_{i}(t)\mid\leq\epsilon,\forall t&gt;T^{*}\)</span></p>
+<p>故对上述取定的 <span class="math">\(\varepsilon\)</span><span class="math">\(\exists\ T_{2}=T_{2}(\varepsilon)&gt;0,s.t. t&gt;T_{2},\ \int_{t-\bar{\delta}}^{t}\mid z_{i}(s)\mid ds&lt;\frac{\varepsilon}{2}\bar{\delta}\tag{14}\)</span></p>
+<p>令 <span class="math">\(T^{*}=min\{t_{q}\mid t_{q}&gt;max\{T_{1},T_{2}\}q\in\mathbb{N_{+}}\}\)</span>,则我们断言： <span class="math">\(\mid z_{i}(t)\mid\leq\varepsilon,\forall t&gt;T^{*}\)</span></p>
 <p>事实上, <span class="math">\(\forall t&gt;T^{*}\)</span>,不失一般性,假设 <span class="math">\(t\in[t_{p},t_{p+1}),p\geq q\)</span></p>
 <p>下面分两种情况：</p>
 <p>情形1： <span class="math">\(t\in[t_{p},t_{p}+\bar{\delta})\)</span></p>
-<p>此时,由 <span class="math">\((12)(13):\mid z_{i}(t)\mid\leq\mid z_{i}(t)-z_{i}(t_{p})\mid+\mid z_{i}(t_{p})\mid\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon\)</span></p>
+<p>此时,由 <span class="math">\((12)(13):\mid z_{i}(t)\mid\leq\mid z_{i}(t)-z_{i}(t_{p})\mid+\mid z_{i}(t_{p})\mid\leq\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\)</span></p>
 <p>情形2： <span class="math">\(t\in[t_{p}+\bar{\delta},t_{p+1})\)</span></p>
 <p>此时,因 <span class="math">\(z_{i}(s)\)</span>在 <span class="math">\([t-\bar{\delta},t]\subseteq[t_{p},t_{p+1})\)</span>连续,由引理4, <span class="math">\(\exists \nu_{t}\in[t-\bar{\delta},t]\)</span>使得 <span class="math">\(\int_{t-\bar{\delta}}^{t}\mid z_{i}(s)\mid ds=\bar{\delta}\mid z_{i}(\nu_{t})\mid\)</span></p>
-<p>再由 <span class="math">\((14)\)</span>,可得 <span class="math">\(\mid z_{i}(\nu_{t})\mid&lt;\frac{\epsilon}{2}\)</span>,因 <span class="math">\(\nu_{t}\in[t-\bar{\delta},t]\)</span>,则 <span class="math">\(\mid z_{i}(t)\mid\leq\mid z_{i}(t)-z_{i}(\nu_{t})\mid+\mid z_{i}(\nu_{t})\mid\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon\)</span></p>
-<p>故 <span class="math">\(\mid z_{i}(t)\mid\leq\epsilon,\forall t&gt;T^{*}\)</span>,即 <span class="math">\((11)\)</span>得证.</p>
+<p>再由 <span class="math">\((14)\)</span>,可得 <span class="math">\(\mid z_{i}(\nu_{t})\mid&lt;\frac{\varepsilon}{2}\)</span>,因 <span class="math">\(\nu_{t}\in[t-\bar{\delta},t]\)</span>,则 <span class="math">\(\mid z_{i}(t)\mid\leq\mid z_{i}(t)-z_{i}(\nu_{t})\mid+\mid z_{i}(\nu_{t})\mid\leq\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\)</span></p>
+<p>故 <span class="math">\(\mid z_{i}(t)\mid\leq\varepsilon,\forall t&gt;T^{*}\)</span>,即 <span class="math">\((11)\)</span>得证.</p>
 <p>则定理1得证,即系统 <span class="math">\(( * )\)</span>是全局渐近稳定的.</p>
 </div>
 <div class="section" id="mathematica">
