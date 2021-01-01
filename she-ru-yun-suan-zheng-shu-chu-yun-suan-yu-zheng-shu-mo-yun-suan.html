@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Description Get Code public class Main { public static boolean isPalindrome(int p) { int digit=1+(int)Math.log10(p); int[] a=new int[digit]; for(int k=0;k&lt;digit;k++)...">
+        <meta name="description" content="舍入运算 舍入函数Round()将 \(x\in\mathbb{R}\)转换为 \(Round(x)\in\mathbb{Z}\).根据用途不同，有如下定义： 向 \(+\infty\)直接舍入： \(\lceil x\rceil:=\min{n\in\mathbb{Z}\mid n\ge x}\),也记作 \(ceil(x)\) 向 \(-\infty\)直接舍入： \(\lfloor...">
         <meta name="keywords" content="">
         <link rel="icon" href="/favicon.ico">
         <!-- Canonical -->
-        <link rel="canonical" href="/project-euler-4-largest-palindrome-product.html">
+        <link rel="canonical" href="/she-ru-yun-suan-zheng-shu-chu-yun-suan-yu-zheng-shu-mo-yun-suan.html">
         <!-- /Canonical -->
 
-        <title>Project Euler 4: Largest palindrome product - </title>
+        <title>舍入运算，整数除运算与整数模运算 - </title>
 
         <!-- Stylesheets -->
         <link href="/theme/css/all.min.css" rel="stylesheet">
@@ -55,8 +55,8 @@
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content">
-                      <h1 class="header-title">Project Euler 4: Largest palindrome product</h1>
-                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 三 30 十二月 2020, in category <a href="/category/suan-fa.html">算法</a></p>
+                      <h1 class="header-title">舍入运算，整数除运算与整数模运算</h1>
+                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 五 01 一月 2021, in category <a href="/category/dai-shu.html">代数</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
@@ -75,44 +75,37 @@
 
         <!-- Content -->
     <div class="container content">
-        <div class="section" id="description">
-<h2>Description</h2>
-<p><a class="reference external" href="https://projecteuler.net/problem=4">Get</a></p>
-</div>
-<div class="section" id="code">
-<h2>Code</h2>
-<pre class="code java literal-block">
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isPalindrome</span><span class="o">(</span><span class="kt">int</span> <span class="n">p</span><span class="o">)</span>
-<span class="o">{</span>
- <span class="kt">int</span> <span class="n">digit</span><span class="o">=</span><span class="mi">1</span><span class="o">+(</span><span class="kt">int</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">log10</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
- <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">digit</span><span class="o">];</span>
- <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">k</span><span class="o">&lt;</span><span class="n">digit</span><span class="o">;</span><span class="n">k</span><span class="o">++)</span> <span class="n">a</span><span class="o">[</span><span class="n">k</span><span class="o">]=((</span><span class="n">p</span><span class="o">/(</span><span class="kt">int</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="n">k</span><span class="o">))%</span><span class="mi">10</span><span class="o">);</span>
- <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">digit</span><span class="o">;</span> <span class="n">k</span><span class="o">++)</span>
-     <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">k</span><span class="o">]!=</span><span class="n">a</span><span class="o">[</span><span class="n">digit</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">k</span><span class="o">])</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-     <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-<span class="o">}</span>
- <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-     <span class="kt">int</span> <span class="n">i</span><span class="o">,</span><span class="n">j</span><span class="o">,</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
-     <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="mi">1000</span> <span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span><span class="mi">1000</span> <span class="o">;</span> <span class="n">j</span><span class="o">++)</span>
-             <span class="k">if</span><span class="o">(</span><span class="n">isPalindrome</span><span class="o">(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="o">))</span> <span class="n">s</span><span class="o">=(</span><span class="n">s</span><span class="o">&gt;</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="o">?</span><span class="n">s</span><span class="o">:(</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="o">));</span>
-             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
- <span class="o">}</span>
-<span class="o">}</span><span class="c1">//906609</span>
-</pre>
-</div>
-<div class="section" id="comments">
-<h2>Comments</h2>
-<p>欲计算整数 <span class="math">\(p\)</span>在 <span class="math">\(s\)</span>进制下的各项系数 <span class="math">\(a_{k}\)</span>，即求 <span class="math">\(p=\sum_{k=0}^{n}a_{k}s^{k}\)</span>中的 <span class="math">\(a_{k},k=0,...,n\)</span>,可以有以下两种方法：</p>
+        <div class="section" id="id2">
+<h2>舍入运算</h2>
+<p>舍入函数Round()将 <span class="math">\(x\in\mathbb{R}\)</span>转换为 <span class="math">\(Round(x)\in\mathbb{Z}\)</span>.根据用途不同，有如下定义：</p>
 <blockquote>
 <ol class="arabic simple">
-<li><span class="math">\(a_{k}=p/s^{k}\%s\)</span></li>
-<li><span class="math">\(a_{k}=p\%s^{k+1}/s^{k}\)</span></li>
+<li>向 <span class="math">\(+\infty\)</span>直接舍入： <span class="math">\(\lceil x\rceil:=\min{n\in\mathbb{Z}\mid n\ge x}\)</span>,也记作 <span class="math">\(ceil(x)\)</span></li>
+<li>向 <span class="math">\(-\infty\)</span>直接舍入： <span class="math">\(\lfloor x\rfloor:=\max{n\in\mathbb{Z}\mid n\le x}\)</span>,也记作 <span class="math">\(floor(x)\)</span></li>
+<li>向 <span class="math">\(0\)</span>直接舍入： <span class="math">\(zr(x):=sgn(x)\lfloor\mid x\mid\rfloor\)</span></li>
+<li>向 <span class="math">\(\infty\)</span>直接舍入： <span class="math">\(ir(x):=sgn(x)\lceil\mid x\mid\rceil\)</span></li>
+<li>向 <span class="math">\(+\infty\)</span>四舍五入： <span class="math">\(rpi(x):=\lfloor x+\frac{1}{2}\rfloor=\lceil\frac{\lfloor 2x\rfloor}{2}\rceil\)</span></li>
+<li>向 <span class="math">\(-\infty\)</span>四舍五入： <span class="math">\(rni(x):=\lceil x-\frac{1}{2}\rfloor=\lfloor\frac{\lceil 2x\rceil}{2}\rfloor\)</span></li>
+<li>向 <span class="math">\(0\)</span>四舍五入： <span class="math">\(rz(x):=sgn(x)\lceil\mid x\mid-\frac{1}{2}\rceil\)</span></li>
+<li>向 <span class="math">\(\infty\)</span>四舍五入： <span class="math">\(ri(x):=sgn(x)\lfloor\mid x\mid+\frac{1}{2}\rfloor\)</span></li>
+<li>四舍六入五取偶： <span class="math">\(\lfloor x\rceil:=\lfloor x+\frac{1}{2}\rfloor+\lceil\frac{2x-1}{4}\rceil-\lfloor\frac{2x-1}{4}\rfloor-1\)</span></li>
+<li>四舍六入五取奇： <span class="math">\(\lceil x\rfloor:=\lfloor x+\frac{1}{2}\rfloor-\lceil\frac{2x-1}{4}\rceil+\lfloor\frac{2x-1}{4}\rfloor+1\)</span></li>
 </ol>
 </blockquote>
-<p>注：这里&quot;/&quot;为整数除法，&quot;%&quot;为整数求余，即 <span class="math">\(a/b:=-sgn(\frac{a}{b})*\lfloor -\mid \frac{a}{b}\mid \rfloor\)</span>, <span class="math">\(a\%b:=a-b*(a/b)\)</span></p>
-<p>这里选用第一种，第二种不好的地方在于即使 <span class="math">\(p\)</span>不溢出， <span class="math">\(s^{k+1}\)</span>仍然可能会溢出。</p>
+</div>
+<div class="section" id="id3">
+<h2>整数除运算</h2>
+<p><span class="math">\(a/b:=Round(\frac{a}{b}),Round()\)</span>取 <span class="math">\(fix()\)</span>时，为Java,C语言中的整数除法。</p>
+</div>
+<div class="section" id="id4">
+<h2>整数模运算</h2>
+<p><span class="math">\(a\%b:=a-b\cdot Round(\frac{a}{b}),Round()\)</span>取 <span class="math">\(fix()\)</span>时，为Java,C语言中的整数模, <span class="math">\(Round()\)</span>取 <span class="math">\(\lfloor  \rfloor\)</span>时，为Java中的Math.floorMod()函数</p>
+</div>
+<div class="section" id="id5">
+<h2>参考</h2>
+<p>[1] <a class="reference external" href="http://en.wikipedia.org/wiki/Modulo_operation">Modulo Operation - Wikipedia</a></p>
+<p>[2] <a class="reference external" href="http://en.wikipedia.org/wiki/Floor_and_ceiling_functions">Floor and Ceiling Functions - Wikipedia</a></p>
+<p>[3] <a class="reference external" href="http://en.wikipedia.org/wiki/Rounding">Rounding - Wikipedia</a></p>
 </div>
 <script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
