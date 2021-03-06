@@ -1,0 +1,31 @@
+=====================================================================
+Leetcode 136: Single Number
+=====================================================================
+:Author: Hau Wong
+:Date:   2021-03-05
+:Category: 算法
+
+Description
+=====================================================================
+`Get
+<https://leetcode.com/problems/single-number/>`_
+
+.. code:: java
+
+   class Solution {
+    public int singleNumber(int[] nums) {
+       int temp=nums[0],len=nums.length;
+        for(int i=1;i<len;i++) temp^=nums[i];
+        return temp;
+    }
+   }
+
+Comments
+=====================================================================
+利用了 :math:`a\quad xor\quad a=0`\的性质，时间复杂度为 :math:`len`\ (len为数组长度)。
+
+实际上还可以解决这样的问题：在某整数数组中，有一个整数出现了p次，除了这个整数外，其余整数都只出现了q次，找出这个整数。（其中 :math:`p\in\{k\mid k=2m+1,m\in\mathbb{N}_{+}\},q\in\{k\mid k=2m,m\in\mathbb{N}\}`\）
+
+这样马上我们会想到一个与之“对偶”的问题：在某整数数组中，有一个整数出现了q次，除了这个整数外，其余整数都只出现了p次，找出这个整数。（其中 :math:`p\in\{k\mid k=2m+1,m\in\mathbb{N}\},q\in\{k\mid k=2m,m\in\mathbb{N}_{+}\}`\）
+
+这个问题最快能否在线性时间内解决？留待以后。

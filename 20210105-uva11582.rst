@@ -1,0 +1,161 @@
+=======================================
+UVA11582: Colossal Fibonacci Numbers!
+=======================================
+:Author: Hau Wong
+:Date:   2021-01-05
+:Category: 算法
+
+Description
+==========================
+`Download
+<https://uva.onlinejudge.org/external/115/p11582.pdf>`_
+
+.. code:: java
+
+   //TLE
+    import java.util.Scanner;
+    public class Main {
+    public static long mat2MulModn(long a,long b,short n)
+    {
+        long m=0xFFFFL;
+        if(((a>>0x10)|(b>>0x10))==0) return (a*b)%n;
+        short a0= (short) (a&m);
+        short b0= (short) (b&m);
+        short t=a0;a0=(short) ((a0*b0)%n);
+        short a2= (short) ((a&(m<<0x20))>>>0x20);
+        b0=(short) ((b0*a2)%n);
+        short b1= (short) ((b&(m<<0x10))>>>0x10);
+        a2= (short) ((a2*b1)%n);
+        b1= (short) ((b1*t)%n);
+        short b3= (short) ((b&(m<<0x30))>>>0x30);
+        short a3= (short) ((a&(m<<0x30))>>>0x30);
+        t=b3;b3= (short) ((b3*a3)%n);
+        short b2= (short) ((b&(m<<0x20))>>>0x20);
+        a3= (short) ((a3*b2)%n);
+        short a1= (short) ((a&(m<<0x10))>>>0x10);
+        b2= (short) ((b2*a1)%n);
+        a1= (short) ((a1*t)%n);
+        a2= (short) ((a2+b3)%n);
+        a3= (short) ((b0+a3)%n);
+        a1= (short) ((a1+b1)%n);
+        a0= (short) ((a0+b2)%n);
+        a=0x00;a|=a2;a<<=0x10;a|=a3;a<<=0x10;
+        a|=a1;a<<=0x10;a|=a0; return a;
+    }
+    public static long mat2PowModn(long a,long k,short n)
+    {
+        if(k==0&&((a>>>0x10)==0)) return 0x0000_0000_0000_0001L%n;
+        long ans=0x0001_0000_0000_0001L;
+        for(;k!=0x00;k>>>=0x01)
+        {
+            if((k&0x01)!=0) ans=mat2MulModn(ans,a,n);
+            a=mat2MulModn(a,a,n);
+        }
+        return mat2MulModn(ans,0x0001_0000_0000_0001L,n);
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        short n,p;
+        long a,b;
+        sc.nextLine();
+        String[] temp;
+        for(int i=0;i<num;i++)
+        {
+            temp=sc.nextLine().trim().split("\\s+");
+            a=Long.parseUnsignedLong(temp[0]);
+            b=Long.parseUnsignedLong(temp[1]);
+            n=Short.parseShort(temp[2]);
+            int j=0;
+            for (int u=0,v=1,w=1; j < n * n; j++) {
+                w = (u + v) % n;u = v;v = w;
+                if(n==1) break;
+                if (u == 0 && v == 1) break;
+            }
+            p= (short) (j+1);
+            a=(a%2==0)?(2*((a>>>1)%p))%p:((2*((a>>>1)%p))%p+1)%p;
+            b=mat2PowModn(a,b,p);
+            System.out.println((b<2)?b:(mat2PowModn(0x1_0001_0001L,b-1,n)&0xFFFFL));
+        }
+    }
+   }
+
+.. code:: c
+
+   //AC
+   #include <stdio.h>
+   int t[1000002];
+   unsigned long PowModn(unsigned long a,unsigned long k,int n)
+   {
+    unsigned long ans=1;
+    for(;k;k>>=0x01)
+    {
+        if(k&0x01) ans=(ans*a)%n;
+        a=(a*a)%n;
+    }
+    return ans%n;
+   }
+    int main() {
+    int i,num,n,p;
+    unsigned long a,b;
+    scanf("%d",&num);
+    for(i=0;i<num;i++)
+    {
+        scanf("%lu %lu %d",&a,&b,&n);
+        t[0]=0,t[1]=1,p=1;
+        for(int j=2;j<n*n;j+=2)
+        {
+            t[j]=(t[j-1]+t[j-2])%n;
+            t[j+1]=(t[j-1]+t[j])%n;
+            if(t[j]==0&&t[j+1]==1)
+            {
+                p= j;
+                break;
+            }
+            if(t[j]==1&&t[j+1]==0)
+            {
+                p= j+1;
+                break;
+            }
+        }
+        b=PowModn(a%p,b,p);
+        printf("%lu\n",(b<2u)?b:t[b]);
+    }
+    return 0;
+    }
+
+Comments
+==========================
+这题终于让我意识到C/C++相较于Java的巨大优越性，下次除了leetcode外坚决不用Java写题！
+
+刚开始是用Java写的，首先就碰到了一个巨大难题： :math:`0\le a,b\lt 2^{64}`\，而Java中没有无符号的long类型，于是辗转求助于SO：
+
+`Java equivalent of unsigned long long?
+<https://stackoverflow.com/questions/508630/java-equivalent-of-unsigned-long-long>`_
+
+`How to split a String by space
+<https://stackoverflow.com/questions/7899525/how-to-split-a-string-by-space>`_
+
+最终艰难的拿到了a,b的值...
+
+（这里说明一下：先接收到的是String，trim()方法是用来去掉字符串首尾的空格的，split("\\s+")用来将字符串按空格分成若干字符串，返回的是String[]的引用。这样输入的问题就解决了。long a=Long.parseUnsignedLong(str);就可以把字符串str转换为无符号长整数再存储到a里。比如str="18446744073709551615"，也就是 :math:`2^{64}-1`\时，a接收到的是-1。处理这样的数需要特别注意运算符，比如右移，取余。）
+
+接下来的问题就是求Fibonacci数列在模n下的周期。这里又踩到了坑：
+`Fibonacci Number modulo M and Pisano Period
+<https://www.geeksforgeeks.org/fibonacci-number-modulo-m-and-pisano-period/>`_
+上提供的求周期的方法是错的。
+
+后来在MO上找到了正解：
+`Calculating Pisano periods for any integer
+<https://mathoverflow.net/questions/144308/calculating-pisano-periods-for-any-integer>`_
+(需要稍作修改,n=1时周期p=1)
+
+之后就是求 :math:`a^{b}\mod p`\，这里对a分片后分别模p再拼在一起，再用快速幂对其求b次幂。(b不需要分片，因为在快速幂算法中只有移位起了作用)
+
+最后还是用快速幂求Fibonacci数列。因为用了两次快速幂，可以考虑将二阶方阵和数的乘方合并为一个函数，又因为不论是n还是p都可以用16位表示，考虑将二阶方阵用long类型表示，0-15位表示第一行第一列。当16-63位为0时表示是一个数。理论上简直完美！
+
+然而，结局是TLE。。。。(上面第一段代码)
+
+后面还是回到常规，用回C语言了。顿时天空晴朗许多：a,b太大？有unsigned long！不会找周期？没事,开个int[1000000]的表，一个一个数存下来，从下标2开始看到0后接1的就是一个周期！因为是按顺序存，所以直接用f(n+1)=f(n)+f(n-1)求值。至于求 :math:`a^{b}\mod p`\还是得用快速幂，不过因为只是数，写起来就简单多了！
+
+最后，AC!

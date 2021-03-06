@@ -1,0 +1,47 @@
+=======================================
+UVA1225: Digit Counting
+=======================================
+:Author: Hau Wong
+:Date:   2020-12-24
+:Category: 算法
+
+Description
+==========================
+`Download
+<https://uva.onlinejudge.org/external/12/p1225.pdf>`_
+
+
+.. code:: java
+
+   import java.util.Scanner;
+   public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num=sc.nextInt();
+        int n,len;
+        String str,s="0123456789";
+        for(int i=0;i<num;i++) {
+            n = sc.nextInt();
+            str="";
+            for(int j=1;j<n||j==n;j++) str+=j;
+            len=str.length();
+            int[] a=new int[10];
+            for(int j=0;j<len;j++)
+                for(int k=0;k<10;k++)
+                    if(str.charAt(j)==s.charAt(k))
+                    {
+                        a[k]++;
+                        break;
+                    }
+            for(int k=0;k<10;k++) {
+                System.out.print(a[k]);
+                if(k!=9) System.out.print(" ");
+                else System.out.println();
+            }
+        }
+    }
+   }
+
+Comments
+==========================
+应该会有一个O(1)的方法，可惜这里空白太小，写不下。

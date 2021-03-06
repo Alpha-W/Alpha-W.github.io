@@ -1,0 +1,31 @@
+==========================
+Leetcode 1:Two Sum
+==========================
+:Author: Hau Wong
+:Date:   2018-05-12
+:Category: 算法
+
+Description
+==========================
+`Get
+<https://leetcode.com/problems/two-sum>`_.
+
+.. code:: c
+
+   int* twoSum(int* nums, int numsSize, int target) {
+    int i,j, *p;
+    p = (int*)malloc(2*sizeof(int));
+	for(i=0;i<numsSize;i++)
+		for(j=i;j<numsSize;j++)
+			{
+				if(i==j)
+					continue;
+				if(nums[i]+nums[j]==target)
+				{
+					p[0] = i;
+					p[1] = j;
+				}
+			}
+	
+	return p;
+   }

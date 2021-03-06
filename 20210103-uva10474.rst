@@ -1,0 +1,48 @@
+=======================================
+UVA0103: Where is the Marble?
+=======================================
+:Author: Hau Wong
+:Date:   2021-01-03
+:Category: 算法
+
+Description
+==========================
+`Download
+<https://uva.onlinejudge.org/external/104/p10474.pdf>`_
+
+.. code:: java
+
+   import java.util.Arrays;
+   import java.util.Scanner;
+   public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int a,b,x,l,r,m;
+        for(int num=1;;num++)
+        {
+            a=sc.nextInt();
+            b=sc.nextInt();
+            if(a==0&&b==0) break;
+            int[] arr=new int[a];
+            for (int i = 0; i < a; i++) arr[i]=sc.nextInt();
+            System.out.println("CASE# "+num+":");
+            Arrays.sort(arr);
+            while (b--!=0){
+                x=sc.nextInt();
+                for(l=0,r=a;l<r;)
+                {
+                    m = l+(r-l)/2;
+                    if (arr[m] >= x) r = m;
+                    else l = m + 1;
+                }
+                if(l>=a||l<0) System.out.println(x + " not found");
+                else if(arr[l] != x) System.out.println(x + " not found");
+                else System.out.println(x + " found at " + (l + 1));
+            }
+        }
+    }
+   }
+
+Comments
+==========================
+这里需要注意的是java中的Array.binarySearch()是不能直接在这题用的，需要自己重新写一个二分查找，用来寻找满足目标值的最小下标。

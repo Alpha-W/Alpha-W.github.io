@@ -1,0 +1,36 @@
+=======================================
+Leetcode 14: Longest Common Prefix
+=======================================
+:Author: Hau Wong
+:Date:   2020-12-14
+:Category: 算法
+
+Description
+==========================
+`Get
+<https://leetcode.com/problems/longest-common-prefix>`_
+
+
+.. code:: java
+
+   class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        String target="";char temp;
+        if (strs.length==0) return target;
+        int min = strs[0].length(),i,j;
+        for(i=0;i<strs.length;i++) min=strs[i].length()>min?min:strs[i].length();
+        boolean flag=true;
+        for(j=0;j<min;j++)
+        {
+            temp = strs[0].charAt(j);
+            for(i=0;i<strs.length;i++)
+                if(temp!=strs[i].charAt(j))
+                {
+                    flag=false;
+                    break;
+                }
+            if(flag) target+=temp;
+        }
+        return target;
+    }
+   }

@@ -1,0 +1,52 @@
+================================
+舍入运算，整数除运算与整数模运算
+================================
+:Author: Hau Wong
+:Date:   2021-01-01
+:Category: 代数
+
+舍入运算
+================================
+舍入函数Round()将实数 :math:`x\in\mathbb{R}`\转换为距离其最近的整数 :math:`Round(x)\in\mathbb{Z}`\.根据用途不同，有如下定义：
+
+ 1. 向 :math:`+\infty`\直接舍入： :math:`Round_{1}(x):=\min\{n\in\mathbb{Z}\mid n\ge x\}`\,也记作 :math:`ceil(x),\lceil x\rceil`\
+
+ 2. 向 :math:`-\infty`\直接舍入： :math:`Round_{2}(x):=\max\{n\in\mathbb{Z}\mid n\le x\}`\,也记作 :math:`floor(x),\lfloor x\rfloor`\
+
+ 3.  向 :math:`0`\直接舍入： :math:`Round_{3}(x):=sgn(x)\lfloor\mid x\mid\rfloor`\,也记作 :math:`fix(x),trunc(x)`\
+
+ 4.  向 :math:`\infty`\直接舍入： :math:`Round_{4}(x):=sgn(x)\lceil\mid x\mid\rceil`\
+
+ 5.  向 :math:`+\infty`\四舍五入： :math:`Round_{5}(x):=\lfloor x+\frac{1}{2}\rfloor=\lceil\frac{\lfloor 2x\rfloor}{2}\rceil`\
+
+ 6.  向 :math:`-\infty`\四舍五入： :math:`Round_{6}(x):=\lceil x-\frac{1}{2}\rfloor=\lfloor\frac{\lceil 2x\rceil}{2}\rfloor`\
+
+ 7.  向 :math:`0`\四舍五入： :math:`Round_{7}(x):=sgn(x)\lceil\mid x\mid-\frac{1}{2}\rceil`\
+
+ 8.  向 :math:`\infty`\四舍五入： :math:`Round_{8}(x):=sgn(x)\lfloor\mid x\mid+\frac{1}{2}\rfloor`\
+
+ 9.  四舍六入五取偶： :math:`Round_{9}(x):=\lfloor x+\frac{1}{2}\rfloor+\lceil\frac{2x-1}{4}\rceil-\lfloor\frac{2x-1}{4}\rfloor-1`\
+
+ 10.  四舍六入五取奇： :math:`Round_{10}(x):=\lfloor x+\frac{1}{2}\rfloor+\lceil\frac{2x+1}{4}\rceil-\lfloor\frac{2x+1}{4}\rfloor-1`\
+
+番外：Round()函数处理后的数据保留了多少原数据的信息呢？舍入前后他们的各阶矩的关系如何？
+
+
+整数除运算
+================================
+:math:`a/b:=Round(\frac{a}{b}),Round()`\取 :math:`fix()`\时，为Java,C语言中的整数除法。
+
+整数模运算
+================================
+:math:`a\%b:=a-b\cdot Round(\frac{a}{b}),Round()`\取 :math:`fix()`\时，为Java,C语言中的整数模, :math:`Round()`\取 :math:`\lfloor  \rfloor`\时，为Java中的Math.floorMod()函数
+
+参考
+================================
+[1] `Modulo Operation - Wikipedia
+<http://en.wikipedia.org/wiki/Modulo_operation>`_
+
+[2] `Floor and Ceiling Functions - Wikipedia
+<http://en.wikipedia.org/wiki/Floor_and_ceiling_functions>`_
+
+[3] `Rounding - Wikipedia
+<http://en.wikipedia.org/wiki/Rounding>`_

@@ -1,0 +1,45 @@
+=======================================
+UVA10082: WERTYU
+=======================================
+:Author: Hau Wong
+:Date:   2020-12-17
+:Category: 算法
+
+Description
+==========================
+`Download
+<https://uva.onlinejudge.org/external/100/p10082.pdf>`_
+
+
+.. code:: java
+
+   import java.util.Scanner;
+
+   public class Main {
+
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s="`1234567890-=QWERTYUIOP[]\\ASDFGHJKL;'ZXCVBNM,./";
+        String str;
+        while(in.hasNextLine())
+        {
+            str=in.nextLine();
+            for(int i=0;i<str.length();i++) {
+                if (str.charAt(i) == ' ')
+                    System.out.print(' ');
+                for (int j = 0; j < s.length(); j++) {
+                    if (str.charAt(i) == s.charAt(j))
+                        System.out.print(s.charAt(j - 1));
+                }
+            }
+            System.out.print("\n");
+        }
+    }
+   }
+
+
+
+Comments
+==========================
+在分支语句较多时，打表可以减少代码量。

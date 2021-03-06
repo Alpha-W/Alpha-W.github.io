@@ -1,0 +1,63 @@
+=======================================
+UVA272: TEX Quotes
+=======================================
+:Author: Hau Wong
+:Date:   2020-12-16
+:Category: 算法
+
+Description
+==========================
+`Download
+<https://uva.onlinejudge.org/external/2/p272.pdf>`_
+
+
+.. code:: java
+
+   import java.util.Scanner;
+
+   public class Main {
+
+
+    public static void main(String[] args)
+    {
+        Scanner in=new Scanner(System.in);
+        boolean flag=true;
+        String s;
+        while(in.hasNextLine())
+        {
+            s=in.nextLine();
+            for(int i=0;i<s.length();i++)
+            {
+                if(s.charAt(i)=='\u001a') break;
+                if(s.charAt(i)=='"')
+                {
+                    if(flag) {
+                        System.out.print('`');
+                        System.out.print('`');
+                        flag = !flag;
+                    }
+                    else
+                    {
+                        System.out.print('\'');
+                        System.out.print('\'');
+                        flag=!flag;
+                    }
+                }
+                else
+                    System.out.print(s.charAt(i));
+            }
+            System.out.print('\n');
+        }
+    }
+   }
+
+
+Comments
+==========================
+紫书上UVA的第一题。难点在于输入输出。
+
+Scanner类中没有提供nextChar()方法，另外如果用nextXXX()方法会遇到跳过空白字符的问题。所以用nextLine()方法为宜。
+
+在输出换行符时需不需要区分最后一行与非最后一行呢？
+
+测试样例文件末尾带有换行符"\n"，所以不需要区分。

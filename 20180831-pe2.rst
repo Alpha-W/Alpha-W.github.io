@@ -1,0 +1,44 @@
+============================================
+Project Euler 2: Even Fibonacci numbers
+============================================
+:Author: Hau Wong
+:Date:   2018-08-31
+:Category: 算法
+
+Description
+============================================
+`Get
+<https://projecteuler.net/problem=2>`_.
+
+Code
+============================================
+
+.. code:: java
+
+   public class Main {
+
+    public static long fib(int n) {
+        long[] a = {1, 1};
+        if (n == 1) return a[0];
+        else if (n == 2) return a[1];
+        else {
+            for (int i = n; i > 2; i = i - 2) {
+                a[0] = a[0] + a[1];
+                a[1] = a[0] + a[1];
+            }
+            if (n % 2 == 1) return a[0];
+            else return a[1];
+        }
+    }
+    public static void main(String[] args) {
+        long s=0;
+        for(int i=1;fib(i)<4000000;i++) if(fib(i)%2==0) s+=fib(i);
+        System.out.println(s);
+    }
+   }//4613732
+
+Comments
+==========================
+fib(n)还可以从 :math:`O(n)`\改进到 :math:`O(lb(n))`\。更一般的，求第n个有理系数线性常差分方程的特解都可以用 :math:`O(lb(n))`\的算法表出
+
+我们问，:math:`O(lb(n))`\的阶是否是最佳的？

@@ -1,0 +1,45 @@
+============================================
+Project Euler 3: Largest prime factor
+============================================
+:Author: Hau Wong
+:Date:   2018-08-31
+:Category: 算法
+
+Description
+============================================
+`Get
+<https://projecteuler.net/problem=3>`_.
+
+Code
+============================================
+
+.. code:: matlab
+
+   max(factor(600851475143))
+   %%6857
+
+.. code:: java
+
+   public class Main {
+    public static boolean isprime(long n)
+    {
+        boolean f=true;
+        long sqrtn=1+(long)Math.sqrt(n);
+        for(int i=2;i<sqrtn;i++)
+            if(n%i==0) f=false;
+            return f;
+    }
+    public static void main(String[] args) {
+        long s=600851475;
+        long i;
+        for(i=800000;i>0;i--)
+            if(((1000*(s%i)+143%i)%i==0)&&isprime(i)) break;
+            System.out.println(i);
+    }
+   }//6857
+
+Comments
+==========================
+600851475这个数用long装不下?可以自己写大整数类，也可以直接用BigInteger。但不用也是可以的，只需选择适当的偏移量分成两片就行了。(2021-01-06:写成long s=600851475143L;就行了。。)
+
+800000是粗略估的素因子上界，素性检测复杂度是 :math:`O(\sqrt{n})`\ 应该还有个更快的算法，忘记了。。

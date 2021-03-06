@@ -1,0 +1,51 @@
+=======================================
+UVA1584: Circular Sequence
+=======================================
+:Author: Hau Wong
+:Date:   2020-12-20
+:Category: 算法
+
+Description
+==========================
+`Download
+<https://uva.onlinejudge.org/external/15/p1584.pdf>`_
+
+
+.. code:: java
+
+   import java.util.Scanner;
+   public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num=sc.nextInt();
+        String s=sc.nextLine();
+        int len,j1,j2;
+        for(int i=0;i<num;i++)
+        {
+            s=sc.nextLine();
+            len=s.length();
+            for (j1=0,j2=1;j2<len;j2++)
+            {
+                for(int k=0;k<len;k++)
+                {
+                    if(s.charAt((j1+k)%len)>s.charAt((j2+k)%len))
+                    {
+                        j1=j2;
+                        break;
+                    }
+                    else if(s.charAt((j1+k)%len)<s.charAt((j2+k)%len)) break;
+                }
+            }
+            for(int k=0;k<len;k++)
+            {
+                System.out.print(s.charAt((j1+k)%len));
+            }
+            System.out.println();
+        }
+        }
+    }
+
+
+Comments
+==========================
+注意nextInt()后跟nextLine()时，nextLine()接收到的其实是空串。这里处理方法是再插入一个nextLine()接收空串。

@@ -1,0 +1,28 @@
+=======================================
+Leetcode 69: Sqrt(x)
+=======================================
+:Author: Hau Wong
+:Date:   2020-12-17
+:Category: 算法
+
+Description
+==========================
+`Get
+<https://leetcode.com/problems/sqrtx>`_
+
+.. code:: java
+
+   class Solution {
+    public int mySqrt(int x) {
+        if(x==0) return 0;
+        double s=x/2.0;
+        while(s*s-x>=0.0001||s*s-x<=-0.0001)
+        s=0.5*(s+x/s);
+        return (int)s;
+        
+    }
+   }
+
+Comments
+==========================
+不仅骗了个AC，还骗了个100%...

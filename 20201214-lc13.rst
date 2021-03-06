@@ -1,0 +1,36 @@
+==============================
+Leetcode 13: Roman to Integer
+==============================
+:Author: Hau Wong
+:Date:   2020-12-14
+:Category: 算法
+
+Description
+==========================
+`Get
+<https://leetcode.com/problems/roman-to-integer>`_
+
+.. code:: java
+
+   class Solution {
+    public int romanToInt(String s) 
+   {
+    int[] a=new int[s.length()];
+    for(int i=0;i<s.length();i++)
+    switch(s.charAt(i))
+    {
+     case 'I':  a[i]=1;break;
+     case 'V':  a[i]=5;break;
+     case 'X':  a[i]=10;break;
+     case 'L':  a[i]=50;break;
+     case 'C':  a[i]=100;break;
+     case 'D':  a[i]=500;break;
+     case 'M':  a[i]=1000;break;
+    }
+   for(int i=0;i<s.length()-1;i++)
+   if(a[i]<a[i+1]) a[i]=-a[i];
+   int sum=0;
+   for(int i=0;i<s.length();i++)   sum+=a[i];
+   return sum;
+   }
+   }

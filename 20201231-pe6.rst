@@ -1,0 +1,30 @@
+============================================
+Project Euler 6: Sum square difference
+============================================
+:Author: Hau Wong
+:Date:   2020-12-31
+:Category: 算法
+
+Description
+============================================
+`Get
+<https://projecteuler.net/problem=6>`_
+
+Code
+============================================
+
+.. code:: java
+
+   public class Main {
+   public static void main(String[] args) {
+        int sum=0;
+        for (int i = 1; i <101 ; i++)
+            for (int j = 1; j < 101; j++)
+                if(i!=j) sum+=i*j;
+                System.out.println(sum);
+    }
+   }//25164150
+
+Comments
+==========================
+

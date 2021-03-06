@@ -1,0 +1,49 @@
+============================================
+Project Euler 5: Smallest multiple
+============================================
+:Author: Hau Wong
+:Date:   2020-12-30
+:Category: 算法
+
+Description
+============================================
+`Get
+<https://projecteuler.net/problem=5>`_
+
+Code
+============================================
+
+.. code:: java
+
+   public class Main {
+    public static void main(String[] args) {
+        int[] prime={2,3,5,7,11,13,17,19};
+        int[] num=new int[8],max=new int[8];
+        int temp;
+        for(int i=2;i<21;i++)
+        {
+            temp=i;
+            for(int j=0;j<8;j++)
+            {
+                while (i%prime[j]==0)
+                {
+                    num[j]++;
+                    i/=prime[j];
+                }
+            }
+            for (int k = 0; k <8 ; k++) {
+                max[k]=(max[k]>num[k]?max[k]:num[k]);
+                num[k]=0;
+            }
+            i=temp;
+        }
+        long prod=1;
+        for(int k=0;k<8;k++)
+            prod*=(int)Math.pow(prime[k],max[k]);
+            System.out.println(prod);
+    }
+   }//232792560
+
+Comments
+==========================
+做复杂了，实际上只需列出在不超过20的前提下各个素数的最高幂次

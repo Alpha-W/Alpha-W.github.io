@@ -1,0 +1,75 @@
+=======================================
+UVA401: Palindromes
+=======================================
+:Author: Hau Wong
+:Date:   2020-12-19
+:Category: 算法
+
+Description
+==========================
+`Download
+<https://uva.onlinejudge.org/external/4/p401.pdf>`_
+
+
+.. code:: java
+
+   import java.util.Scanner;
+
+   public class Main {
+    public static void main(String[] args)
+    {
+       boolean p,m;
+       Scanner sc=new Scanner(System.in);
+       String s,m1="BCDFGKNPQR4679",
+               m2="AEHIJLMOSTUVWXYZ12358",
+               m3="A3HILJMO2TUVWXY51SEZ8";
+       int len,len1=m1.length(),len2=m2.length();
+       while(sc.hasNextLine())
+       {
+           s=sc.nextLine();
+           len=s.length();
+           p=true;m=true;
+           for(int i=0;i<len;i++)
+           {
+               if(s.charAt(i)!=s.charAt(len-1-i))
+               {
+                   p=false;
+
+               }
+               for(int j=0;j<len1;j++)
+                   if (s.charAt(i)==m1.charAt(j))
+                   {
+                       m=false;
+                       break;
+                   }
+               for(int k=0;k<len2;k++)
+                   if(s.charAt(i)==m2.charAt(k)&&s.charAt(len-1-i)!=m3.charAt(k))
+                   {
+                       m=false;
+                       break;
+                   }
+           }
+           if(p)
+           {
+               if(m) System.out.print(s+" -- is a mirrored palindrome.");
+               else System.out.print(s+" -- is a regular palindrome.");
+           }
+           else
+           {
+               if(m) System.out.print(s+" -- is a mirrored string.");
+               else System.out.print(s+" -- is not a palindrome.");
+           }
+           System.out.println();
+           System.out.println();
+       }
+    }
+   }
+
+
+
+
+Comments
+==========================
+坑点在于洛谷的中文翻译里没有说输出空行，但原版英文题目和紫书里都写明了每个答案后跟一个空行。第一次看的是洛谷所以导致WA,后来才发现洛谷的题目翻译漏了。
+
+另外需注意“每个答案后跟一个空行”是指两个换行符。

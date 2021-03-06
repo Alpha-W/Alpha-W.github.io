@@ -1,0 +1,31 @@
+=====================================================================
+Leetcode 1342: Number of Steps to Reduce a Number to Zero
+=====================================================================
+:Author: Hau Wong
+:Date:   2021-03-04
+:Category: 算法
+
+Description
+=====================================================================
+`Get
+<https://leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/>`_
+
+.. code:: java
+
+   class Solution {
+    public int numberOfSteps (int num) {
+        int sum=0;
+        if(num==0) return 0;
+        while(num!=0)
+        {
+           if((num&1)==0) sum+=1;
+           else sum+=2;
+           num>>>=1; 
+        }
+        return sum-1;
+    }
+   }
+
+Comments
+=====================================================================
+时间复杂度 :math:`lb(num)`\，还有需注意边界值的处理。

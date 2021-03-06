@@ -1,0 +1,116 @@
+============================
+Java入门1:面向过程部分
+============================
+:Author: Hau Wong
+:Date:   2017-08-29
+:Category: Java
+
+设置环境变量
+============================
+在~/.bashrc内添加如下代码(以/home/hau/jdk为jdk路径)：
+
+.. code::
+
+   export JAVA_HOME=/home/hau/jdk
+   export JDK_HOME=$JAVA_HOME
+   export JRE_HOME=$JAVA_HOME/jre
+   export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib
+   export PATH=$PATH:$JAVA_HOME/bin
+
+面向过程编程：范例
+============================
+
+.. code:: java
+
+   import java.util.Scanner;
+   //java.lang下的包不需要导入，其余均需要
+   /**
+    * 这是个测试类，用于复习Java面向过程部分
+    * @author hall
+    * @version 1.0
+    */
+   //生成javadoc文档：javadoc -d ./ -author -version 类名.java
+   public class Main {
+    {//构造代码块，在类中方法外实现，先于构造方法执行，用于存放各个构造方法中相同的代码(对对象进行初始化)
+        System.out.println("This is a construction block");
+    }
+    static
+    {//静态代码块，在类中方法外实现，先于构造代码块执行，对象多次初始化时只执行一次(对类进行初始化)
+        System.out.println("This is a static block");
+    }
+    Main(){}
+    public static void main(String[] args) {//java Main xxx命令传递给args值（空格作分隔符）
+        {//局部代码块，用于限定变量生命周期
+            byte byteDemo1 = ~3;//～按位取反
+            //位运算能用在byte,short,char,int,long类型
+            byte byteDemo2 = 4;
+            int intDemo = byteDemo1 + byteDemo2;
+            // intDemo的类型若为byte则报错,因byte会自动提升为int，表达式有long则自动提升为long
+            //byte 8bit,short(有符号) char(无符号) 16bit,int 32bit,long 64bit
+            // float 32bit,double 64bit
+            byteDemo2 += byteDemo1;
+            //隐含强制类型转换
+            byteDemo2 = (int) (3L + 4L);
+            //末尾的L表示强制长整数型，3+4=7为long,强制转换为int,后被优化为byte(注：非int整数型不会直接优化为byte)
+        }
+            float floatDemo1=6.02E23F;//E表示10的幂，末尾的F表示强制单精度类型
+        double doubleDemo1=0xA__B_CD_E.FP2D,doubleDemo2=0b100,doubleDemo3=0712;
+        //下划线无实义,P表示2的幂，末尾的F表示双精度类型(但字面量本身就是双精度)
+        //开头为0b表示二进制，开头为0后接数字表示八进制，开头为0x表示十六进制
+        boolean boolDemo1 = true;//boolean与整数型不互通
+        boolean boolDemo2 =true ||(boolDemo1=!boolDemo1);
+        //boolDemo1 = true,因||带短路
+        boolDemo2 =true |(boolDemo1=!boolDemo1);
+        //boolDemo1 = false,因|不带短路
+        Scanner in = new Scanner(System.in);
+        String strDemo =in.nextLine();
+        switch (strDemo)//switch内可为byte,short,char,int,Enum,String
+        {
+            default:
+                System.out.println("Your input is "+strDemo);
+                //若strDemo==D,则会先执行default再执行B
+            case "B":
+                System.out.println("Your input is B");
+                break;
+            case "C":
+                System.out.println("Your input is C");
+                break;
+        }
+        int[] a={1,2,3,4,5,6};//数组静态初始化，另：int[] a=new int[]{1,2,3,4,5,6}
+        //int[] b=new int[6];//数组动态初始化,b[0]==b[1]==...==b[5]==0
+        //数组类型推断：var b=new int[6],不能用var[] b=new int[6],也不能用var b={1,2,3}
+        int[] c=a;//数组名可以赋值，即数组名不是const类型
+        //注：数组越界编译器不报错，但解释器报错
+        int[][] d=new int [3][];//int[][] d=new int[3][2]也可以
+        //第二个分量未定义时，需对每个分量分别初始化
+        System.out.println(c[2]);
+        int s=0;
+        label:for(var var=0;var<a.length;var++)
+            //var:局部变量类型推断,定义时必须初始化,JDK 10
+            //var可作变量名
+            //a.length返回数组的长度
+        for(int x : a)//遍历顺序为下标从小到大
+        {
+            s=sum(s,x);//循环体内不能对a中元素作修改
+            if(x==3) continue label;//continue在loop中使用，不加标签则默认最内层循环
+            if(x==5) break label;//break在loop，switch中使用,不加标签则默认最内层循环
+        }//x脱离{}代码块，不可见
+    }
+
+    /**
+     * 这是一个用于对两个整数求和的函数
+     * @param a 加数
+     * @param b 被加数
+     * @return 返回两数之和
+     */
+    static int sum(int a,int b){return a+b;}
+    /**
+     * 这是一个用于对三个浮点数求和的函数
+     * @param a 加数
+     * @param b 第二个加数
+     * @param c 第三个
+     * @return 返回三数之和
+     */
+    static float sum(float a,float b,float c){return a+b+c;}//重载,允许参数列表不同的方法使用相同的方法名
+   //与返回值类型无关
+   }

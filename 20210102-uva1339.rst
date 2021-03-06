@@ -1,0 +1,73 @@
+=======================================
+UVA1339: Ancient Cipher
+=======================================
+:Author: Hau Wong
+:Date:   2021-01-02
+:Category: 算法
+
+Description
+==========================
+`Download
+<https://uva.onlinejudge.org/external/13/p1339.pdf>`_
+
+
+.. code:: java
+
+   import java.util.Scanner;
+   public class Main {
+   public static void insertSort(int[] r)
+    {
+        int i,j,x;
+        for(i=1;i<r.length;i++)
+        {
+            for(x=r[i],j=i-1;j>-1&&x<r[j];j--) r[j+1]=r[j];
+            r[j+1]=x;
+        }
+    }
+    public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+      String str1,str2;
+      int len;
+      boolean flag;
+      while (sc.hasNextLine())
+      {
+          str1=sc.nextLine();
+          str2=sc.nextLine();
+          len=str1.length();
+          int[] s1=new int[26],s2=new int[26];
+          for (int i = 0; i < len; i++) {
+              for (int j = 0; j < 26; j++) {
+                  if(str1.charAt(i)-'A'==j)
+                  {
+                      s1[j]++;
+                      break;
+                  }
+              }
+          }
+          for (int i = 0; i < len; i++) {
+              for (int j = 0; j < 26; j++) {
+                  if(str2.charAt(i)-'A'==j)
+                  {
+                      s2[j]++;
+                      break;
+                  }
+              }
+          }
+          insertSort(s1);insertSort(s2);
+          flag=true;
+          for (int i = 0; i < 26; i++) {
+              if(s1[i]!=s2[i])
+              {
+                  flag=false;
+                  break;
+              }
+          }
+          if(flag) System.out.println("YES");
+          else System.out.println("NO");
+      }
+    }
+   }
+
+Comments
+==========================
+刚开始以为加密规则是一种平移，实际上弱一点：只是一个单射（由于只有26个，所以也是双射）。故仅需统计出现的字符数，再对其排序，之后逐个比较即可。

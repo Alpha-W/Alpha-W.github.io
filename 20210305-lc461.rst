@@ -1,0 +1,30 @@
+=====================================================================
+Leetcode 461: Hamming Distance
+=====================================================================
+:Author: Hau Wong
+:Date:   2021-03-05
+:Category: 算法
+
+Description
+=====================================================================
+`Get
+<https://leetcode.com/problems/hamming-distance/>`_
+
+.. code:: java
+
+   class Solution {
+    public int hammingDistance(int x, int y) {
+        x^=y;
+        int sum=0;
+        while(x!=0)
+        {
+            if((x&1)==1) sum+=1;
+            x>>>=1;
+        }
+        return sum;
+    }
+   }
+
+Comments
+=====================================================================
+

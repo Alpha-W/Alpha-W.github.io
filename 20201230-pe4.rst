@@ -1,0 +1,47 @@
+============================================
+Project Euler 4: Largest palindrome product
+============================================
+:Author: Hau Wong
+:Date:   2020-12-30
+:Category: 算法
+
+Description
+============================================
+`Get
+<https://projecteuler.net/problem=4>`_
+
+Code
+============================================
+
+.. code:: java
+
+   public class Main {
+   public static boolean isPalindrome(int p)
+   {
+    int digit=1+(int)Math.log10(p);
+    int[] a=new int[digit];
+    for(int k=0;k<digit;k++) a[k]=((p/(int)Math.pow(10,k))%10);
+    for(int k = 0; k < digit; k++)
+        if(a[k]!=a[digit-1-k]) return false;
+        return true;
+   }
+    public static void main(String[] args) {
+        int i,j,s=0;
+        for (i = 100; i <1000 ; i++)
+            for (j = 100; j <1000 ; j++)
+                if(isPalindrome(i*j)) s=(s>i*j?s:(i*j));
+                System.out.println(s);
+    }
+   }//906609
+
+Comments
+==========================
+欲计算整数 :math:`p`\在 :math:`s`\进制下的各项系数 :math:`a_{k}`\，即求 :math:`p=\sum_{k=0}^{n}a_{k}s^{k}`\中的 :math:`a_{k},k=0,...,n`\,可以有以下两种方法：
+
+ 1. :math:`a_{k}=p/s^{k}\%s`\
+
+ 2. :math:`a_{k}=p\%s^{k+1}/s^{k}`\
+
+注：这里"/"为整数除法，"%"为整数求余，即 :math:`a/b:=-sgn(\frac{a}{b})*\lfloor -\mid \frac{a}{b}\mid \rfloor`\, :math:`a\%b:=a-b*(a/b)`\
+
+这里选用第一种，第二种不好的地方在于即使 :math:`p`\不溢出， :math:`s^{k+1}`\仍然可能会溢出。

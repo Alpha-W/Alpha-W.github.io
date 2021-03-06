@@ -1,0 +1,48 @@
+=======================================
+UVA1583: Digit Generator
+=======================================
+:Author: Hau Wong
+:Date:   2020-12-19
+:Category: 算法
+
+Description
+==========================
+`Download
+<https://uva.onlinejudge.org/external/15/p1583.pdf>`_
+
+
+.. code:: java
+
+   import java.util.Scanner;
+   public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int p=0;p<t;p++) {
+            int n = sc.nextInt();
+            int m = 1 + (int) Math.log10(n);
+            int k, gen, flag = 0;
+            for (int i = Math.max(1, n - 9 * m); i < n; i++) {
+                k = 1 + (int) Math.log10(i);
+                gen = i;
+                for (int j = 0; j < k; j++) gen += (i / ((int) Math.pow(10, j))) % 10;
+                if (gen == n) {
+                    System.out.println(i);
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0) System.out.println(0);
+        }
+    }
+   }
+
+
+
+
+
+Comments
+==========================
+看英文原版的题目！紫书和洛谷上都没有输入输出格式要求！
+
+网上的题解和紫书一样都是打表法。这里提供了一种数学上的思路：估计生成元的下界，再BF会好很多。

@@ -1,0 +1,30 @@
+==========================
+15度角与18度角的正弦值
+==========================
+:Author: Hau Wong
+:Date:   2012-01-13
+:Category: 几何
+
+15度角的正弦值
+==========================
+利用含30度角的直角三角形，我们可以得到15度角的正弦值。
+
+设 :math:`\triangle FGH`\为直角三角形， :math:`\angle G=90^\circ,\angle HFG=30^\circ`\,在射线 :math:`GF`\上取一点 :math:`I`\,使 :math:`FI=FH`\,联结 :math:`IH`\.
+
+因 :math:`FI=FH`\,故 :math:`\angle I=\angle FHI`\ ,再由 :math:`\angle HFG=30^\circ ,\angle HFG=\angle I +\angle FHI`\,得 :math:`\angle I=15^\circ`\.
+
+因 :math:`\angle G=90^\circ,\angle HFG=30^\circ`\,故 :math:`FG=\sqrt{3}GH,FH=2GH`\,再由 :math:`FH=FI`\,得 :math:`GI=(2+\sqrt{3})GH`\,由勾股定理可得 :math:`HI=(\sqrt{6}+\sqrt{2})GH`\,故
+
+:math:`\sin 15^\circ=\frac{GH}{HI}=\frac{\sqrt{6}-\sqrt{2}}{4}`\
+
+18度角的正弦值
+==========================
+称顶角为36度的等腰三角形为黄金三角形,我们以此推导 :math:`\sin18^\circ`\的表达式。
+设 :math:`\triangle ABC`\为黄金三角形， :math:`AB=AC,\angle BAC=36^\circ`\,过点 :math:`C`\作 :math:`\angle ABC`\的角平分线交 :math:`AB`\于点 :math:`D`\.
+
+故 :math:`\angle BCD=\angle ACD=36^\circ`\,因 :math:`\angle B=72^\circ`\,故 :math:`\angle BDC=72^\circ`\,进而 :math:`\angle BCD=36^\circ,BC=CD`\得 :math:`\triangle CBD`\也是黄金三角形 因此 :math:`\triangle ABC\sim \triangle CBD`\,再由相似三角形的性质，得 :math:`\frac{AB}{BC}=\frac{BC}{BD}`\,即 :math:`BC=\sqrt{AB\cdot BD} \quad`\①
+
+由 :math:`\angle BDC=72^\circ，\angle BAC=36^\circ`\,得 :math:`\angle ACD=36^\circ=\angle BAC`\,故有 :math:`AD=CD`\,由 :math:`AB-BD=AD,BC=CD`\以及①，可得 :math:`AB-BD=\sqrt{AB\cdot BD} \quad`\解之得 :math:`\frac{AB}{BD}=\frac{3\pm\sqrt{5}}{2}。`\因 :math:`AB>BD`\故 :math:`\frac{AB}{BD}=\frac{3+\sqrt{5}}{2}。`\再由①得 :math:`BC=\sqrt{\frac{2}{3+\sqrt{5}}}AB\quad`\②
+
+过点 :math:`A`\作 :math:`AE`\垂直与 :math:`BC`\交 :math:`BC`\于点 :math:`E`\,因 :math:`AB=AC,\angle BAC=36^\circ`\,故 :math:`\angle BAE=18^\circ,BE=\frac{1}{2}BC`\,再由②可得 :math:`\sin 18^\circ=\frac{BE}{AB}=\frac{\frac{1}{2}BC}{AB}=\frac{\frac{1}{2}\cdot \sqrt{\frac{2}{3+\sqrt{5}}}AB}{AB}=\frac{\sqrt{5}-1}{4}`\
+
