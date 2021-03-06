@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Description Get. Code max(factor(600851475143)) %%6857 public class Main { public static boolean isprime(long n) { boolean f=true; long sqrtn=1+(long)Math.sqrt(n); for(int i=2;i&lt;sqrtn;i++)...">
+        <meta name="description" content="Description Get class Solution { public int numberOfSteps (int num) { int sum=0; if(num==0) return 0; while(num!=0) { if((num&amp;1)==0) sum+=1; else sum+=2; num&gt;&gt;&gt;=1; } return sum-1; } } Comments...">
         <meta name="keywords" content="">
         <link rel="icon" href="/favicon.ico">
         <!-- Canonical -->
-        <link rel="canonical" href="/project-euler-3-largest-prime-factor.html">
+        <link rel="canonical" href="/leetcode-1342-number-of-steps-to-reduce-a-number-to-zero.html">
         <!-- /Canonical -->
 
-        <title>Project Euler 3: Largest prime factor - </title>
+        <title>Leetcode 1342: Number of Steps to Reduce a Number to Zero - </title>
 
         <!-- Stylesheets -->
         <link href="/theme/css/all.min.css" rel="stylesheet">
@@ -55,8 +55,8 @@
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content">
-                      <h1 class="header-title">Project Euler 3: Largest prime factor</h1>
-                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 五 31 八月 2018, in category <a href="/category/suan-fa.html">算法</a></p>
+                      <h1 class="header-title">Leetcode 1342: Number of Steps to Reduce a Number to Zero</h1>
+                      <p class="header-date">By <a href="/author/hau-wong.html">Hau Wong</a>, 四 04 三月 2021, in category <a href="/category/suan-fa.html">算法</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
@@ -77,38 +77,26 @@
     <div class="container content">
         <div class="section" id="description">
 <h2>Description</h2>
-<p><a class="reference external" href="https://projecteuler.net/problem=3">Get</a>.</p>
-</div>
-<div class="section" id="code">
-<h2>Code</h2>
-<pre class="code matlab literal-block">
-<span class="n">max</span><span class="p">(</span><span class="nb">factor</span><span class="p">(</span><span class="mi">600851475143</span><span class="p">))</span>
-<span class="c">%%6857</span>
-</pre>
+<p><a class="reference external" href="https://leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/">Get</a></p>
 <pre class="code java literal-block">
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
- <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isprime</span><span class="o">(</span><span class="kt">long</span> <span class="n">n</span><span class="o">)</span>
- <span class="o">{</span>
-     <span class="kt">boolean</span> <span class="n">f</span><span class="o">=</span><span class="kc">true</span><span class="o">;</span>
-     <span class="kt">long</span> <span class="n">sqrtn</span><span class="o">=</span><span class="mi">1</span><span class="o">+(</span><span class="kt">long</span><span class="o">)</span><span class="n">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
-     <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">sqrtn</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>
-         <span class="k">if</span><span class="o">(</span><span class="n">n</span><span class="o">%</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="n">f</span><span class="o">=</span><span class="kc">false</span><span class="o">;</span>
-         <span class="k">return</span> <span class="n">f</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kt">int</span> <span class="nf">numberOfSteps</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+     <span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+     <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+     <span class="k">while</span><span class="o">(</span><span class="n">num</span><span class="o">!=</span><span class="mi">0</span><span class="o">)</span>
+     <span class="o">{</span>
+        <span class="k">if</span><span class="o">((</span><span class="n">num</span><span class="o">&amp;</span><span class="mi">1</span><span class="o">)==</span><span class="mi">0</span><span class="o">)</span> <span class="n">sum</span><span class="o">+=</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">else</span> <span class="n">sum</span><span class="o">+=</span><span class="mi">2</span><span class="o">;</span>
+        <span class="n">num</span><span class="o">&gt;&gt;&gt;=</span><span class="mi">1</span><span class="o">;</span>
+     <span class="o">}</span>
+     <span class="k">return</span> <span class="n">sum</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
  <span class="o">}</span>
- <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-     <span class="kt">long</span> <span class="n">s</span><span class="o">=</span><span class="mi">600851475</span><span class="o">;</span>
-     <span class="kt">long</span> <span class="n">i</span><span class="o">;</span>
-     <span class="k">for</span><span class="o">(</span><span class="n">i</span><span class="o">=</span><span class="mi">800000</span><span class="o">;</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">--)</span>
-         <span class="k">if</span><span class="o">(((</span><span class="mi">1000</span><span class="o">*(</span><span class="n">s</span><span class="o">%</span><span class="n">i</span><span class="o">)+</span><span class="mi">143</span><span class="o">%</span><span class="n">i</span><span class="o">)%</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="o">)&amp;&amp;</span><span class="n">isprime</span><span class="o">(</span><span class="n">i</span><span class="o">))</span> <span class="k">break</span><span class="o">;</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
- <span class="o">}</span>
-<span class="o">}</span><span class="c1">//6857</span>
+<span class="o">}</span>
 </pre>
 </div>
 <div class="section" id="comments">
 <h2>Comments</h2>
-<p>600851475这个数用long装不下?可以自己写大整数类，也可以直接用BigInteger。但不用也是可以的，只需选择适当的偏移量分成两片就行了。(2021-01-06:写成long s=600851475143L;就行了。。)</p>
-<p>800000是粗略估的素因子上界，素性检测复杂度是 <span class="math">\(O(\sqrt{n})\)</span>应该还有个更快的算法，忘记了。。</p>
+<p>时间复杂度 <span class="math">\(lb(num)\)</span>，还有需注意边界值的处理。</p>
 </div>
 <script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",

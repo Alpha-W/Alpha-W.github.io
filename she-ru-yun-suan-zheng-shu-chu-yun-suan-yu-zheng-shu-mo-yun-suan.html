@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="舍入运算 舍入函数Round()将 \(x\in\mathbb{R}\)转换为 \(Round(x)\in\mathbb{Z}\).根据用途不同，有如下定义： 向 \(+\infty\)直接舍入： \(\lceil x\rceil:=\min{n\in\mathbb{Z}\mid n\ge x}\),也记作 \(ceil(x)\) 向 \(-\infty\)直接舍入： \(\lfloor...">
+        <meta name="description" content="舍入运算 舍入函数Round()将实数 \(x\in\mathbb{R}\)转换为距离其最近的整数 \(Round(x)\in\mathbb{Z}\).根据用途不同，有如下定义： 向 \(+\infty\)直接舍入： \(Round_{1}(x):=\min\{n\in\mathbb{Z}\mid n\ge x\}\),也记作 \(ceil(x),\lceil x\rceil\) 向...">
         <meta name="keywords" content="">
         <link rel="icon" href="/favicon.ico">
         <!-- Canonical -->
@@ -77,21 +77,22 @@
     <div class="container content">
         <div class="section" id="id2">
 <h2>舍入运算</h2>
-<p>舍入函数Round()将 <span class="math">\(x\in\mathbb{R}\)</span>转换为 <span class="math">\(Round(x)\in\mathbb{Z}\)</span>.根据用途不同，有如下定义：</p>
+<p>舍入函数Round()将实数 <span class="math">\(x\in\mathbb{R}\)</span>转换为距离其最近的整数 <span class="math">\(Round(x)\in\mathbb{Z}\)</span>.根据用途不同，有如下定义：</p>
 <blockquote>
 <ol class="arabic simple">
-<li>向 <span class="math">\(+\infty\)</span>直接舍入： <span class="math">\(\lceil x\rceil:=\min{n\in\mathbb{Z}\mid n\ge x}\)</span>,也记作 <span class="math">\(ceil(x)\)</span></li>
-<li>向 <span class="math">\(-\infty\)</span>直接舍入： <span class="math">\(\lfloor x\rfloor:=\max{n\in\mathbb{Z}\mid n\le x}\)</span>,也记作 <span class="math">\(floor(x)\)</span></li>
-<li>向 <span class="math">\(0\)</span>直接舍入： <span class="math">\(zr(x):=sgn(x)\lfloor\mid x\mid\rfloor\)</span></li>
-<li>向 <span class="math">\(\infty\)</span>直接舍入： <span class="math">\(ir(x):=sgn(x)\lceil\mid x\mid\rceil\)</span></li>
-<li>向 <span class="math">\(+\infty\)</span>四舍五入： <span class="math">\(rpi(x):=\lfloor x+\frac{1}{2}\rfloor=\lceil\frac{\lfloor 2x\rfloor}{2}\rceil\)</span></li>
-<li>向 <span class="math">\(-\infty\)</span>四舍五入： <span class="math">\(rni(x):=\lceil x-\frac{1}{2}\rfloor=\lfloor\frac{\lceil 2x\rceil}{2}\rfloor\)</span></li>
-<li>向 <span class="math">\(0\)</span>四舍五入： <span class="math">\(rz(x):=sgn(x)\lceil\mid x\mid-\frac{1}{2}\rceil\)</span></li>
-<li>向 <span class="math">\(\infty\)</span>四舍五入： <span class="math">\(ri(x):=sgn(x)\lfloor\mid x\mid+\frac{1}{2}\rfloor\)</span></li>
-<li>四舍六入五取偶： <span class="math">\(\lfloor x\rceil:=\lfloor x+\frac{1}{2}\rfloor+\lceil\frac{2x-1}{4}\rceil-\lfloor\frac{2x-1}{4}\rfloor-1\)</span></li>
-<li>四舍六入五取奇： <span class="math">\(\lceil x\rfloor:=\lfloor x+\frac{1}{2}\rfloor-\lceil\frac{2x-1}{4}\rceil+\lfloor\frac{2x-1}{4}\rfloor+1\)</span></li>
+<li>向 <span class="math">\(+\infty\)</span>直接舍入： <span class="math">\(Round_{1}(x):=\min\{n\in\mathbb{Z}\mid n\ge x\}\)</span>,也记作 <span class="math">\(ceil(x),\lceil x\rceil\)</span></li>
+<li>向 <span class="math">\(-\infty\)</span>直接舍入： <span class="math">\(Round_{2}(x):=\max\{n\in\mathbb{Z}\mid n\le x\}\)</span>,也记作 <span class="math">\(floor(x),\lfloor x\rfloor\)</span></li>
+<li>向 <span class="math">\(0\)</span>直接舍入： <span class="math">\(Round_{3}(x):=sgn(x)\lfloor\mid x\mid\rfloor\)</span>,也记作 <span class="math">\(fix(x),trunc(x)\)</span></li>
+<li>向 <span class="math">\(\infty\)</span>直接舍入： <span class="math">\(Round_{4}(x):=sgn(x)\lceil\mid x\mid\rceil\)</span></li>
+<li>向 <span class="math">\(+\infty\)</span>四舍五入： <span class="math">\(Round_{5}(x):=\lfloor x+\frac{1}{2}\rfloor=\lceil\frac{\lfloor 2x\rfloor}{2}\rceil\)</span></li>
+<li>向 <span class="math">\(-\infty\)</span>四舍五入： <span class="math">\(Round_{6}(x):=\lceil x-\frac{1}{2}\rfloor=\lfloor\frac{\lceil 2x\rceil}{2}\rfloor\)</span></li>
+<li>向 <span class="math">\(0\)</span>四舍五入： <span class="math">\(Round_{7}(x):=sgn(x)\lceil\mid x\mid-\frac{1}{2}\rceil\)</span></li>
+<li>向 <span class="math">\(\infty\)</span>四舍五入： <span class="math">\(Round_{8}(x):=sgn(x)\lfloor\mid x\mid+\frac{1}{2}\rfloor\)</span></li>
+<li>四舍六入五取偶： <span class="math">\(Round_{9}(x):=\lfloor x+\frac{1}{2}\rfloor+\lceil\frac{2x-1}{4}\rceil-\lfloor\frac{2x-1}{4}\rfloor-1\)</span></li>
+<li>四舍六入五取奇： <span class="math">\(Round_{10}(x):=\lfloor x+\frac{1}{2}\rfloor+\lceil\frac{2x+1}{4}\rceil-\lfloor\frac{2x+1}{4}\rfloor-1\)</span></li>
 </ol>
 </blockquote>
+<p>番外：Round()函数处理后的数据保留了多少原数据的信息呢？舍入前后他们的各阶矩的关系如何？</p>
 </div>
 <div class="section" id="id3">
 <h2>整数除运算</h2>
